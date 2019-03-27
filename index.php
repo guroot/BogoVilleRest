@@ -20,6 +20,7 @@ $app->get('/', function ($request, $response, $args) {
 
 $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
 
+//POULE
 
 //********************************************************************************
 //Régions

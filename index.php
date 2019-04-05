@@ -4,7 +4,7 @@
  * User: Jonathan Fleury
  * Date: 19-03-24
  * Time: 20:16
- */ 
+ */
 
 // Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';

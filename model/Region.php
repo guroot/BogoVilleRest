@@ -10,6 +10,8 @@ namespace model;
 class Region
 {
 
+    //Modif BIDON - TEST FOR PULL (POULE)
+
     /**
      * @var PDO
      */

@@ -8,7 +8,13 @@ class TypeTest extends TestCase
     public static function setUpBeforeClass(): void{
         parent::setUpBeforeClass();
         global $pdo;
+        $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE ". UsagerTable::$TABLE_NAME . "; SET FOREIGN_KEY_CHECKS = 1;");
+        $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE ". VilleTable::$TABLE_NAME . "; SET FOREIGN_KEY_CHECKS = 1;");
+        $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE " . RegionTable::$TABLE_NAME . "; SET FOREIGN_KEY_CHECKS = 1;");
+        $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE ".VoirieProblemeTable::$table_name. ";" . "SET FOREIGN_KEY_CHECKS = 1;");
+        $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE " . StatutTable::$TABLE_NAME . "; SET FOREIGN_KEY_CHECKS = 1;");
         $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE " . TypeTable::$TABLE_NAME . "; SET FOREIGN_KEY_CHECKS = 1;");
+        $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE " . UsagerProblemesTable::$TABLE_NAME. "; SET FOREIGN_KEY_CHECKS = 1;");
     }
 
 

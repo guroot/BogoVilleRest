@@ -1,21 +1,50 @@
 <?php
-
-namespace model;
+namespace  model;
 /**
  * Created by PhpStorm.
  * User: fletch
  * Date: 19-03-24
  * Time: 20:38
  */
-class Region
-{
+class Region extends DataAccess {
 
-    //Modif BIDON - TEST FOR PULL (POULE)
+    private $table_name;
+    private $id;
+    private $all_column;
+    private $nom;
 
     /**
-     * @var PDO
+     * @return mixed
      */
-    private $_pdo;
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getTableName(): string
+    {
+        return $this->table_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllColumn(): array
+    {
+        return $this->all_column;
+    }
 
 
     /**
@@ -24,16 +53,12 @@ class Region
     public function __construct($pdo)
     {
         $this->_pdo = $pdo;
+        $this->table_name = RegionTable::$TABLE_NAME;
+        $this->id = RegionTable::$ID;
+        $this->all_column = RegionTable::getAllColums();
+        $this->nom = RegionTable::$NOM;
     }
 
 
-    // Retourne l'enregistrement à partir
-    // de sa clé primaire auto-increment
-    public function getById($id)
-    {
-        $statement = $this->_pdo->prepare("SELECT * FROM region WHERE idregion=?");
-        $statement->execute([$id]);
-        return $statement->fetchObject();
-    }
 
 }

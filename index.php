@@ -9,11 +9,11 @@
 // Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';
 
-ini_set('display_errors',true);
+ini_set('display_errors',false);
 
 $configuration = [
     'settings' => [
-        'displayErrorDetails' => true,
+        'displayErrorDetails' =>false,
     ],
 ];
 $c = new \Slim\Container($configuration);
@@ -27,7 +27,7 @@ $app->get('/', function ($request, $response, $args) {
 
 
 
-$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '00Amentane00');
+$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
 
 //********************************************************************************
 //villes

@@ -37,7 +37,6 @@ class DataAccess
      * @return bool
      */
     public function deleteByID($id,$model){
-        var_dump($id);
         $request = $this->_pdo->prepare("DELETE FROM " . $model->getTableName() . " WHERE " . $model->getId() .
             " = :" . $model->getId());
         return $request->execute([$model->getId() => $id]);

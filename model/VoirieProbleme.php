@@ -120,7 +120,7 @@ class VoirieProbleme extends DataAccess
     }
 
 
-    // Vérifié avec POSTMAN reste à tester.
+
     public function getProblemsByTownId($idville){
         $request = $this->_pdo->prepare("SELECT * FROM " . $this->getTableName() . " WHERE ".
                                                 $this->getIdville() . " = :" . $this->getIdville());
@@ -128,7 +128,7 @@ class VoirieProbleme extends DataAccess
         return $request->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    // Vérifié avec POSTMAN reste a tester
+
     public function getProblemsByTypeIdAndTownId($idType, $idville){
         $request = $this->_pdo->prepare("SELECT * FROM " . $this->getTableName() . " WHERE ".
                                         $this->getType() . " = :" . $this->getType() .

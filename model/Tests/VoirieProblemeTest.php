@@ -148,8 +148,160 @@ class VoirieProblemeTest extends TestCase
         $model = new \model\VoirieProbleme($pdo);
         $result = $model->deleteById($lastId, $model);
         $hopeFalse = $model->getById($lastId, $model);
+        $this->assertTrue($result);
         $this->assertFalse($hopeFalse);
 
+    }
+
+
+    public function testGetProblemsByTownId(){
+        global $pdo;
+        $model = new VoirieProbleme($pdo);
+        $regionId = $this->insertRegion();
+        $townOneId = $this->insertTown($regionId, "Shawinigan");
+        $townTwoId = $this->insertTown($regionId, "Trois-Rivières");
+        $type = $this->insertType("Nide de poule", "Trou dans la chaussée");
+        $statut = $this->insertStatus("Soumis");
+        $problemOne = $this->insertProblem("Commentaire 1", $townOneId, $type,$statut);
+        $problemTwo = $this->insertProblem("Commentaire 2", $townOneId, $type,$statut);
+        $problemThree = $this->insertProblem("Commentaire 3", $townTwoId, $type,$statut);
+        $problemFour = $this->insertProblem("Commentaire 4", $townOneId, $type,$statut);
+        $problemArray = $model->getProblemsByTownId($townOneId);
+        $problemArrayTwo = $model->getProblemsByTownId($townTwoId);
+        $problemGETOne = $model->getById($problemOne, $model);
+        $problemGETTwo = $model->getById($problemTwo, $model);
+        $problemGETThree = $model->getById($problemThree, $model);
+        $problemGETFour = $model->getById($problemFour, $model);
+
+        $this->assertEquals($problemGETOne, $problemArray[0]);
+        $this->assertEquals($problemGETTwo, $problemArray[1]);
+        $this->assertEquals($problemGETFour, $problemArray[2]);
+        $this->assertEquals($problemGETThree, $problemArrayTwo[0]);
+    }
+
+    public function testGetProblemsByTypeIdAndTownId(){
+        global $pdo;
+        $model = new VoirieProbleme($pdo);
+        $regionId = $this->insertRegion();
+        $townOneId = $this->insertTown($regionId, "Shawinigan");
+        $townTwoId = $this->insertTown($regionId, "Trois-Rivières");
+        $typeOne = $this->insertType("Train", "Déraillement de train");
+        $typeTwo = $this->insertType("Nid de poule", "Trou dans la chaussée");
+        $statut = $this->insertStatus("Relayé au MTQ");
+        $problemOneId = $this->insertProblem("Allo 1",$townTwoId,$typeOne,$statut);
+        $problemTwoId = $this->insertProblem("Allo 2",$townTwoId,$typeOne,$statut);
+        $problemThreeId = $this->insertProblem("Allo 3",$townOneId,$typeTwo,$statut);
+        $problemFourId = $this->insertProblem("Allo 4",$townTwoId,$typeOne,$statut);
+        $problemFiveId = $this->insertProblem("Allo 5",$townOneId,$typeTwo,$statut);
+        $problemSixId = $this->insertProblem("Allo 6",$townTwoId,$typeOne,$statut);
+        $problemSevenId = $this->insertProblem("Allo 7",$townTwoId,$typeOne,$statut);
+        $problemEightId = $this->insertProblem("Allo 8",$townOneId,$typeTwo,$statut);
+
+        $problemArrayOne = $model->getProblemsByTypeIdAndTownId($typeOne,$townTwoId );
+        $problemArrayTwo = $model->getProblemsByTypeIdAndTownId($typeTwo, $townOneId);
+
+        $this->assertEquals($model->getById($problemOneId, $model),$problemArrayOne[0]);
+        $this->assertEquals($model->getById($problemTwoId, $model),$problemArrayOne[1]);
+        $this->assertEquals($model->getById($problemFourId, $model),$problemArrayOne[2]);
+        $this->assertEquals($model->getById($problemSixId, $model),$problemArrayOne[3]);
+        $this->assertEquals($model->getById($problemSevenId, $model),$problemArrayOne[4]);
+
+        $this->assertEquals($model->getById($problemThreeId, $model),$problemArrayTwo[0]);
+        $this->assertEquals($model->getById($problemFiveId, $model),$problemArrayTwo[1]);
+        $this->assertEquals($model->getById($problemEightId, $model),$problemArrayTwo[2]);
+
+    }
+
+
+    public function testGetProblemsByStatusIdAndTownId(){
+        global $pdo;
+        $model = new VoirieProbleme($pdo);
+        $regionId = $this->insertRegion();
+        $townOneId = $this->insertTown($regionId, "Shawinigan");
+        $townTwoId = $this->insertTown($regionId, "Trois-Rivières");
+        $typeOne = $this->insertType("Train", "Déraillement de train");
+        $statutOne = $this->insertStatus("Relayé au MTQ");
+        $statutTwo = $this->insertStatus("Relayé a Hydro-Québec");
+        $problemOneId = $this->insertProblem("Allo 1",$townOneId,$typeOne,$statutOne); //
+        $problemTwoId = $this->insertProblem("Allo 2",$townTwoId,$typeOne,$statutTwo);
+        $problemThreeId = $this->insertProblem("Allo 3",$townOneId,$typeOne,$statutOne);//
+        $problemFourId = $this->insertProblem("Allo 4",$townTwoId,$typeOne,$statutTwo);
+        $problemFiveId = $this->insertProblem("Allo 5",$townOneId,$typeOne,$statutOne);//
+        $problemSixId = $this->insertProblem("Allo 6",$townTwoId,$typeOne,$statutTwo);
+        $problemSevenId = $this->insertProblem("Allo 7",$townOneId,$typeOne,$statutOne);//
+        $problemEightId = $this->insertProblem("Allo 8",$townTwoId,$typeOne,$statutTwo);
+
+        $problemArrayOne = $model->getProblemsByStatusIdAndTownId($statutOne,$townOneId );
+        $problemArrayTwo = $model->getProblemsByStatusIdAndTownId($statutTwo,$townTwoId );
+
+        $this->assertEquals($model->getById($problemOneId, $model), $problemArrayOne[0]);
+        $this->assertEquals($model->getById($problemThreeId, $model), $problemArrayOne[1]);
+        $this->assertEquals($model->getById($problemFiveId, $model), $problemArrayOne[2]);
+        $this->assertEquals($model->getById($problemSevenId, $model), $problemArrayOne[3]);
+
+        $this->assertEquals($model->getById($problemTwoId, $model), $problemArrayTwo[0]);
+        $this->assertEquals($model->getById($problemFourId, $model), $problemArrayTwo[1]);
+        $this->assertEquals($model->getById($problemSixId, $model), $problemArrayTwo[2]);
+        $this->assertEquals($model->getById($problemEightId, $model), $problemArrayTwo[3]);
+
+    }
+
+    private function insertProblem($comment, $town, $type, $statut){
+        global $pdo;
+        $problem = new VoirieProbleme($pdo);
+        $problem->postSomething([
+            $problem->getType()=> $type,
+            $problem->getIdville() => $town,
+            $problem->getIdstatut() => $statut,
+            $problem->getIdmedia() => "",
+            $problem->getCommentaire() => $comment,
+            $problem->getLongitude() => 111.1111111,
+            $problem->getLatitude() => 222.2222222], $problem);
+
+        return $pdo->lastInsertId();
+    }
+
+
+    private function insertStatus($description){
+        global $pdo;
+        $status = new Statut($pdo);
+        $statusResult = $status->postSomething([$status->getDescription() => $description], $status);
+        if ($statusResult){
+            return $pdo->lastInsertId();
+        }
+        return null;
+    }
+
+    private function insertRegion(){
+        global $pdo;
+        $region = new Region($pdo);
+        $regionResult = $region->postSomething([$region->getNom() => "Mauricie"], $region);
+        if ($regionResult){
+            return $pdo->lastInsertId();
+        }
+        return null;
+    }
+
+    private function insertTown($regionId, $townName) {
+        global $pdo;
+        $ville = new Ville($pdo);
+        if ($regionId > 0){
+            $ville->postSomething([$ville->getRegion() => $regionId, $ville->getNom() => $townName,
+                $ville->getActif() => 1], $ville);
+            return $pdo->lastInsertId();
+        }
+        return null;
+    }
+
+    private function insertType($nom, $description){
+        global $pdo;
+        $type = new Type($pdo);
+        $typeResult = $type->postSomething([$type->getNom() => $nom,
+            $type->getDescription() => $description], $type);
+        if ($typeResult){
+            return $pdo->lastInsertId();
+        }
+        return null;
     }
 
 

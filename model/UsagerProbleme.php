@@ -6,18 +6,9 @@ namespace model;
 
 class UsagerProbleme extends DataAccess
 {
-    private $table_name;
+
     private $userid;
     private $problemid;
-    private $all_column;
-
-    /**
-     * @return string
-     */
-    public function getTableName(): string
-    {
-        return $this->table_name;
-    }
 
     /**
      * @return string
@@ -33,14 +24,6 @@ class UsagerProbleme extends DataAccess
     public function getProblemid(): string
     {
         return $this->problemid;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllColumn(): array
-    {
-        return $this->all_column;
     }
 
 

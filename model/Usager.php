@@ -6,9 +6,7 @@ namespace model;
 
 class Usager extends DataAccess
 {
-    private $table_name;
-    private $id;
-    private $all_column;
+
     private $mail;
     private $create_time;
     private $facebookid;
@@ -16,29 +14,6 @@ class Usager extends DataAccess
     private $password;
     private $idville;
 
-    /**
-     * @return string
-     */
-    public function getTableName(): string
-    {
-        return $this->table_name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllColumn(): array
-    {
-        return $this->all_column;
-    }
 
     /**
      * @return string

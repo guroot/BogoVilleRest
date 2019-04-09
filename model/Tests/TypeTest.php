@@ -25,9 +25,9 @@ class TypeTest extends TestCase
         global $pdo;
         $typeModel = new \model\Type($pdo);
         $typePost = [$typeModel->getNom() => "Arbre tombé", $typeModel->getDescription() => "Tombé directement dans la rue"];
-        $typeModel->postSomething($typePost, $typeModel);
+        $typeModel->postSomething($typePost);
         $lastId = $pdo->lastInsertId();
-        $typeGet = $typeModel->getById($lastId, $typeModel);
+        $typeGet = $typeModel->getById($lastId);
 
         $this->assertEquals($typeGet, (object)array_merge([$typeModel->getId() => $lastId], $typePost ));
         return $lastId;
@@ -40,11 +40,11 @@ class TypeTest extends TestCase
     public function testUpdateType($typeId){
         global $pdo;
         $typeModel = new \model\Type($pdo);
-        $typeGet = $typeModel->getById($typeId, $typeModel);
+        $typeGet = $typeModel->getById($typeId);
         $key = $typeModel->getDescription();
         $typeGet->$key = "Tombé sur la voie ferrée";
-        $typeModel->updateByID($typeId, [$typeModel->getDescription() => "Tombé sur la voie ferrée"], $typeModel);
-        $typePut = $typeModel->getById($typeId, $typeModel);
+        $typeModel->updateByID($typeId, [$typeModel->getDescription() => "Tombé sur la voie ferrée"]);
+        $typePut = $typeModel->getById($typeId);
 
         $this->assertEquals($typeGet, $typePut);
     }
@@ -56,13 +56,13 @@ class TypeTest extends TestCase
     public function testGetAll($firstId){
         global $pdo;
         $model = new \model\Type($pdo);
-        $typeOne = $model->getById($firstId, $model);
+        $typeOne = $model->getById($firstId);
         $typePost = [$model->getNom() => "Train", $model->getDescription() => "Déraillement"];
-        $model->postSomething($typePost, $model);
+        $model->postSomething($typePost);
         $secondId = $pdo->lastInsertId();
-        $typeTwo = $model->getById($secondId, $model);
+        $typeTwo = $model->getById($secondId);
 
-        $array = $model->getAll($model);
+        $array = $model->getAll();
 
         $this->assertEquals($typeOne, $array[0]);
         $this->assertEquals($typeTwo, $array[1]);
@@ -75,8 +75,8 @@ class TypeTest extends TestCase
     public function testDeleteById($lastId){
         global $pdo;
         $model = new \model\Type($pdo);
-        $result = $model->deleteById($lastId, $model);
-        $hopeFalse = $model->getById($lastId, $model);
+        $result = $model->deleteById($lastId);
+        $hopeFalse = $model->getById($lastId);
         $this->assertTrue($result);
         $this->assertFalse($hopeFalse);
 

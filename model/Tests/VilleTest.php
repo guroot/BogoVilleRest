@@ -24,16 +24,16 @@ class VilleTest extends TestCase
         global $pdo;
         $regionModel = new \model\Region($pdo);
         $regionPost = [$regionModel->getNom() => "Capitale Nationale"];
-        $regionModel->postSomething($regionPost,$regionModel);
+        $regionModel->postSomething($regionPost);
         $regionId = $pdo->lastInsertId();
 
         $villeModel = new \model\Ville($pdo);
         $villePost = [$villeModel->getNom() => "Québec", $villeModel->getActif() => 1, $villeModel->getRegion() => $regionId];
-        $villeModel->postSomething($villePost, $villeModel);
+        $villeModel->postSomething($villePost);
 
 
         $villeId = $pdo->lastInsertId();
-        $villeGet = $villeModel->getById($villeId,$villeModel);
+        $villeGet = $villeModel->getById($villeId);
 
         $this->assertEquals($villeGet, (object)array_merge([$villeModel->getId() => $villeId], $villePost));
 
@@ -50,14 +50,14 @@ class VilleTest extends TestCase
         $model = new \model\Ville($pdo);
 
         // Va chercher le dernier enregistrement fait.
-        $test = $model->getById($insertedId, $model);
+        $test = $model->getById($insertedId);
         $key = $model->getNom();
         // Remplace le champs qui va etre changé.
         $test->$key = "Amqui";
         // Update la valeur
-        $model->updatebyId($insertedId ,[$model->getNom() => "Amqui"], $model);
+        $model->updatebyId($insertedId ,[$model->getNom() => "Amqui"]);
         // Va rechercher "l'objet" qui vient d'être modifié
-        $test2 = $model->getById($insertedId, $model);
+        $test2 = $model->getById($insertedId);
         $this->assertEquals($test,$test2);
 
     }
@@ -72,12 +72,12 @@ class VilleTest extends TestCase
 
         $secondArray = [$model->getRegion() => 1, $model->getNom() => "Mirabel", $model->getActif() => 1];
 
-        $problemOne = $model->getById($firtsInsert,$model);
-        $model->postSomething($secondArray, $model);
+        $problemOne = $model->getById($firtsInsert);
+        $model->postSomething($secondArray);
         $secondInsert = $pdo->lastInsertId();
-        $problemTwo = $model->getById($secondInsert , $model);
+        $problemTwo = $model->getById($secondInsert);
 
-        $array = $model->getAll($model);
+        $array = $model->getAll();
 
         $this->assertEquals($problemOne, $array[0]);
         $this->assertEquals($problemTwo, $array[1]);
@@ -91,9 +91,9 @@ class VilleTest extends TestCase
     public function testDeleteById($lastId){
         global $pdo;
         $model = new \model\Ville($pdo);
-        $result = $model->deleteById($lastId, $model);
+        $result = $model->deleteById($lastId);
 
-        $hopeFalse = $model->getById($lastId, $model);
+        $hopeFalse = $model->getById($lastId);
 
         $this->assertTrue($result);
         $this->assertFalse($hopeFalse);

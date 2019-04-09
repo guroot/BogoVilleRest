@@ -25,22 +25,22 @@ class UsagerProblemeTest extends TestCase
         global $pdo;
         $type = new \model\Type($pdo);
         $typePost = [$type->getNom() => "Patate", $type->getDescription() => "Écrasé sur la route"];
-        $type->postSomething($typePost, $type);
+        $type->postSomething($typePost);
         $typeId = $pdo->lastInsertId();
 
         $region = new \model\Region($pdo);
         $regionPost = [$region->getNom() => "Mauricie"];
-        $region->postSomething($regionPost, $region);
+        $region->postSomething($regionPost);
         $regionId = $pdo->lastInsertId();
 
         $ville = new \model\Ville($pdo);
         $villePost = [$ville->getRegion() => $regionId, $ville->getNom() => "Shawinigan", $ville->getActif() => 1];
-        $ville->postSomething($villePost, $ville);
+        $ville->postSomething($villePost);
         $villeId = $pdo->lastInsertId();
 
         $statut = new \model\Statut($pdo);
         $statutPost = [$statut->getDescription() => "En traitement"];
-        $statut->postSomething($statutPost, $statut);
+        $statut->postSomething($statutPost);
         $statutId = $pdo->lastInsertId();
 
         $model = new \model\VoirieProbleme($pdo);
@@ -53,9 +53,9 @@ class UsagerProblemeTest extends TestCase
             $model->getLongitude() => 222.22222,
             $model->getIdstatut() => $statutId
         ];
-        $model->postSomething($firstProb, $model);
+        $model->postSomething($firstProb);
         $problemId2 = $pdo->lastInsertId();
-        $problemGet2 = $model->getById($problemId2, $model );
+        $problemGet2 = $model->getById($problemId2 );
 
         $secondArray = [
             $model->getType() => $typeId,
@@ -66,9 +66,9 @@ class UsagerProblemeTest extends TestCase
             $model->getLongitude() => 222.22222,
             $model->getIdstatut() => $statutId
         ];
-        $model->postSomething($secondArray, $model);
+        $model->postSomething($secondArray);
         $problemId = $pdo->lastInsertId();
-        $problemGet = $model->getById($problemId, $model );
+        $problemGet = $model->getById($problemId );
 
         $usagerModel = new \model\Usager($pdo);
 
@@ -80,7 +80,7 @@ class UsagerProblemeTest extends TestCase
             $usagerModel->getCreateTime() => "2019-01-12",
             $usagerModel->getPassword() => "admin"
         ];
-        $usagerModel->postSomething($firtsArray, $usagerModel);
+        $usagerModel->postSomething($firtsArray);
         $usagerId = $pdo->lastInsertId();
         $secondUser = [
             $usagerModel->getMail() => "alfred_babouche@falala.biz",
@@ -91,10 +91,10 @@ class UsagerProblemeTest extends TestCase
             $usagerModel->getPassword() => "password"
         ];
 
-        $usagerModel->postSomething($secondUser, $usagerModel);
+        $usagerModel->postSomething($secondUser);
         $usagerId2 = $pdo->lastInsertId();
-        $userGet = $usagerModel->getById($usagerId, $usagerModel);
-        $userGet2 = $usagerModel->getById($usagerId2, $usagerModel);
+        $userGet = $usagerModel->getById($usagerId);
+        $userGet2 = $usagerModel->getById($usagerId2);
 
         return [$typeId, $villeId, $statutId, $problemId, $usagerId, $userGet,
                 $problemGet, $userGet2, $problemGet2, $usagerId2, $problemId2 ];
@@ -111,11 +111,11 @@ class UsagerProblemeTest extends TestCase
         $this->assertTrue($result2);
         $this->assertTrue($result3);
         $userModel = new \model\Usager($pdo);
-        $masterUserGet = $userModel->getById($allThings[4], $userModel);
+        $masterUserGet = $userModel->getById($allThings[4]);
 
 
         $problemModel = new \model\VoirieProbleme($pdo);
-        $masterProblemGet = $problemModel->getById($allThings[3], $problemModel);
+        $masterProblemGet = $problemModel->getById($allThings[3]);
 
         $this->assertEquals($allThings[5], $masterUserGet);
         $this->assertEquals($allThings[6], $masterProblemGet);

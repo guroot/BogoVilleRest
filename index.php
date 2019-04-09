@@ -9,14 +9,9 @@
 // Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';
 
-$configuration = [
-    'settings' => [
-        'displayErrorDetails' => true,
-    ],
-];
-$c = new \Slim\Container($configuration);
+
 // instantiate the App object
-$app = new \Slim\App($c);
+$app = new \Slim\App();
 
 
 
@@ -27,7 +22,7 @@ $app->get('/', function ($request, $response, $args) {
 
 
 $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', 'root');
-//var_dump($pdo);
+
 
 
 
@@ -45,9 +40,9 @@ $app->post('/usager/{usagerId}/probleme', function ($request, $response, $args) 
     $voirieProblemeModel = new \model\VoirieProbleme($pdo);
     $usagerProblemeModel = new \model\UsagerProbleme($pdo);
     $dataArray = $request->getParams();
-    $data = $voirieProblemeModel->postSomething($dataArray, $voirieProblemeModel);
-    //$patate = $usagerProblemeModel->associateProblemIdWithUserId($pdo->lastInsertId(), $args['usagerId']);
-    if($data && true)
+    $data = $voirieProblemeModel->postSomething($dataArray);
+    $userPrb = $usagerProblemeModel->associateProblemIdWithUserId($pdo->lastInsertId(), $args['usagerId']);
+    if($data && $userPrb)
         $response = $response->withStatus(200)->withHeader('Content-Type', 'application/json;charset=utf-8')
             ->write('Élément inséré.');
     else
@@ -63,9 +58,9 @@ $app->post('/usager/{usagerId}/probleme', function ($request, $response, $args) 
  */
 $app->get('/probleme', function ($request, $response, $args) use($pdo){
     $problemeModel = new \model\VoirieProbleme($pdo);
-    $data = $problemeModel->getAll($problemeModel);
+    $data = $problemeModel->getAll();
     if($data)
-        $response = $response->withJson($problemeModel->getAll($problemeModel));
+        $response = $response->withJson($problemeModel->getAll());
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -80,7 +75,7 @@ $app->get('/probleme', function ($request, $response, $args) use($pdo){
 $app->put('/probleme/{id}', function ($request, $response, $args) use($pdo){
     $problemeModel = new \model\VoirieProbleme($pdo);
     $dataArray = $request->getParams();
-    $data = $problemeModel->updatebyId($args['id'],$dataArray, $problemeModel);
+    $data = $problemeModel->updatebyId($args['id'],$dataArray);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -116,9 +111,9 @@ $app->get('/count/probleme/{id}', function ($request, $response, $args) use($pdo
  */
 $app->get('/probleme/{id}', function ($request, $response, $args) use($pdo){
     $problemeModel = new \model\VoirieProbleme($pdo);
-    $data = $problemeModel->getById($args['id'],$problemeModel);
+    $data = $problemeModel->getById($args['id']);
     if($data)
-        $response = $response->withJson($problemeModel->getById($args['id'],$problemeModel));
+        $response = $response->withJson($problemeModel->getById($args['id']));
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -158,9 +153,9 @@ $app->get('/probleme/ville/{idville}/statut/{idstatut}', function ($request, $re
  */
 $app->delete('/probleme/{id}', function ($request, $response, $args) use($pdo){
     $problemeModel = new \model\VoirieProbleme($pdo);
-    $data = $problemeModel->deleteById($args['id'],$problemeModel);
+    $data = $problemeModel->deleteById($args['id']);
     if ($data)
-        $response = $response->withJson($problemeModel->deleteById($args['id'], $problemeModel));
+        $response = $response->withJson($problemeModel->deleteById($args['id']));
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -233,7 +228,7 @@ $app->get('/ville', function ($request, $response, $args) use($pdo){
     $villeModel = new \model\Ville($pdo);
     $data = $villeModel->getAll($villeModel);
     if($data)
-        $response = $response->withJson($villeModel->getAll($villeModel));
+        $response = $response->withJson($villeModel->getAll());
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -245,7 +240,7 @@ $app->get('/ville/{id}', function ($request, $response, $args) use($pdo){
     $villeModel = new \model\Ville($pdo);
     $data = $villeModel->getById($args["id"],$villeModel);
     if($data)
-        $response = $response->withJson($villeModel->getById($args["id"],$villeModel));
+        $response = $response->withJson($villeModel->getById($args["id"]));
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -256,7 +251,7 @@ $app->get('/ville/{id}', function ($request, $response, $args) use($pdo){
 $app->post('/ville', function ($request, $response, $args) use($pdo){
     $villeModel = new \model\Ville($pdo);
     $dataArray = $request->getParams();
-    $data = $villeModel->postSomething($dataArray, $villeModel);
+    $data = $villeModel->postSomething($dataArray);
     if($data)
         $response = $response->withStatus(200)->withHeader('Content-Type', 'application/json;charset=utf-8')
             ->write('Élément inséré.');
@@ -271,7 +266,7 @@ $app->post('/ville', function ($request, $response, $args) use($pdo){
 $app->put('/ville/{id}', function ($request, $response, $args) use($pdo){
     $villeModel = new \model\Ville($pdo);
     $dataArray = $request->getParams();
-    $data = $villeModel->updatebyId($args['id'],$dataArray, $villeModel);
+    $data = $villeModel->updatebyId($args['id'],$dataArray);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -285,7 +280,7 @@ $app->put('/ville/{id}', function ($request, $response, $args) use($pdo){
 
 $app->delete('/ville/{id}', function ($request, $response, $args) use($pdo){
     $villeModel = new \model\Ville($pdo);
-    $data = $villeModel->deleteByID($args['id'], $villeModel);
+    $data = $villeModel->deleteByID($args['id']);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -303,9 +298,9 @@ $app->delete('/ville/{id}', function ($request, $response, $args) use($pdo){
 
 $app->get('/usager', function ($request, $response, $args) use($pdo){
     $usagerModel = new \model\Usager($pdo);
-    $data = $usagerModel->getAll($usagerModel);
+    $data = $usagerModel->getAll();
     if($data)
-        $response = $response->withJson($usagerModel->getAll($usagerModel));
+        $response = $response->withJson($usagerModel->getAll());
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -315,9 +310,9 @@ $app->get('/usager', function ($request, $response, $args) use($pdo){
 
 $app->get('/usager/{id}', function ($request, $response, $args) use($pdo){
     $usagerModel = new \model\Usager($pdo);
-    $data = $usagerModel->getById($args["id"], $usagerModel);
+    $data = $usagerModel->getById($args["id"]);
     if($data)
-        $response = $response->withJson($usagerModel->getById($args["id"], $usagerModel));
+        $response = $response->withJson($usagerModel->getById($args["id"]));
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -328,7 +323,7 @@ $app->get('/usager/{id}', function ($request, $response, $args) use($pdo){
 $app->post('/usager', function ($request, $response, $args) use($pdo){
     $usagerModel = new \model\Usager($pdo);
     $dataArray = $request->getParams();
-    $data = $usagerModel->postSomething($dataArray, $usagerModel);
+    $data = $usagerModel->postSomething($dataArray);
     if($data)
         $response = $response->withStatus(200)->withHeader('Content-Type', 'application/json;charset=utf-8')
             ->write('Élément inséré.');
@@ -343,7 +338,7 @@ $app->post('/usager', function ($request, $response, $args) use($pdo){
 $app->put('/usager/{id}', function ($request, $response, $args) use($pdo){
     $usagerModel = new \model\Usager($pdo);
     $dataArray = $request->getParams();
-    $data = $usagerModel->updatebyId($args['id'],$dataArray,$usagerModel);
+    $data = $usagerModel->updatebyId($args['id'],$dataArray);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -357,7 +352,7 @@ $app->put('/usager/{id}', function ($request, $response, $args) use($pdo){
 
 $app->delete('/usager/{id}', function ($request, $response, $args) use($pdo){
     $usagerModel = new \model\Usager($pdo);
-    $data = $usagerModel->deleteByID($args['id'], $usagerModel);
+    $data = $usagerModel->deleteByID($args['id']);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -375,9 +370,9 @@ $app->delete('/usager/{id}', function ($request, $response, $args) use($pdo){
 
 $app->get('/region', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
-    $data = $regionModel->getAll($regionModel);
+    $data = $regionModel->getAll();
     if($data)
-        $response = $response->withJson($regionModel->getAll($regionModel));
+        $response = $response->withJson($regionModel->getAll());
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -387,9 +382,9 @@ $app->get('/region', function ($request, $response, $args) use($pdo){
 
 $app->get('/region/{id}', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
-    $data = $regionModel->getById($args["id"],$regionModel);
+    $data = $regionModel->getById($args["id"]);
     if($data)
-        $response = $response->withJson($regionModel->getById($args["id"],$regionModel));
+        $response = $response->withJson($regionModel->getById($args["id"]));
     else
         return $response->withStatus(404)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -400,7 +395,7 @@ $app->get('/region/{id}', function ($request, $response, $args) use($pdo){
 $app->post('/region', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
     $dataArray = $request->getParams();
-    $data = $regionModel->postSomething($dataArray,$regionModel);
+    $data = $regionModel->postSomething($dataArray);
     if($data)
         $response = $response->withStatus(200)->withHeader('Content-Type', 'application/json;charset=utf-8')
             ->write('Élément inséré.');
@@ -415,7 +410,7 @@ $app->post('/region', function ($request, $response, $args) use($pdo){
 $app->put('/region/{id}', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
     $dataArray = $request->getParams();
-    $data = $regionModel->updatebyId($args['id'],$dataArray, $regionModel);
+    $data = $regionModel->updatebyId($args['id'],$dataArray);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -429,7 +424,7 @@ $app->put('/region/{id}', function ($request, $response, $args) use($pdo){
 
 $app->delete('/region/{id}', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
-    $data = $regionModel->deleteByID($args['id'],$regionModel);
+    $data = $regionModel->deleteByID($args['id']);
     if($data)
         $response = $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -444,7 +439,7 @@ $app->delete('/region/{id}', function ($request, $response, $args) use($pdo){
 $app->post('/type', function ($request, $response, $args) use($pdo){
     $model = new \model\Type($pdo);
     $dataArray = $request->getParams();
-    $data = $model->postSomething($dataArray, $model);
+    $data = $model->postSomething($dataArray);
     if($data)
         $response = $response->withStatus(200)->withHeader('Content-Type', 'application/json;charset=utf-8')
             ->write('Élément inséré.');
@@ -458,7 +453,7 @@ $app->post('/type', function ($request, $response, $args) use($pdo){
 $app->post('/statut', function ($request, $response, $args) use($pdo){
     $model = new \model\Statut($pdo);
     $dataArray = $request->getParams();
-    $data = $model->postSomething($dataArray, $model);
+    $data = $model->postSomething($dataArray);
     if($data)
         $response = $response->withStatus(200)->withHeader('Content-Type', 'application/json;charset=utf-8')
             ->write('Élément inséré.');

@@ -7,36 +7,9 @@ namespace model;
 class Ville extends DataAccess
 {
 
-    private $table_name;
-    private $id;
-    private $all_column;
+
     private $region;
-    private $nom;
     private $actif;
-
-    /**
-     * @return string
-     */
-    public function getTableName(): string
-    {
-        return $this->table_name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllColumn(): array
-    {
-        return $this->all_column;
-    }
 
     /**
      * @return string
@@ -44,14 +17,6 @@ class Ville extends DataAccess
     public function getRegion(): string
     {
         return $this->region;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNom(): string
-    {
-        return $this->nom;
     }
 
     /**

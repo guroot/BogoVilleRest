@@ -20,9 +20,9 @@ class StatutTest extends TestCase
         global $pdo;
         $statut = new \model\Statut($pdo);
         $postArray = [$statut->getDescription() => "En traitement"];
-        $statut->postSomething($postArray, $statut);
+        $statut->postSomething($postArray);
         $lastId = $pdo->lastInsertId();
-        $statutGet = $statut->getById($lastId, $statut);
+        $statutGet = $statut->getById($lastId);
 
         $this->assertEquals($statutGet,(object)array_merge([$statut->getId() => $lastId], $postArray));
 
@@ -36,11 +36,11 @@ class StatutTest extends TestCase
     public function testUpdateStatut($lastId){
         global $pdo;
         $statut = new \model\Statut($pdo);
-        $statutOne = $statut->getById($lastId, $statut);
+        $statutOne = $statut->getById($lastId);
         $key = $statut->getDescription();
         $statutOne->$key = "Transmis à Hydro-Québec";
-        $statut->updateByID($lastId, [$statut->getDescription() => "Transmis à Hydro-Québec"], $statut);
-        $statutTwo = $statut->getById($lastId, $statut);
+        $statut->updateByID($lastId, [$statut->getDescription() => "Transmis à Hydro-Québec"]);
+        $statutTwo = $statut->getById($lastId);
 
         $this->assertEquals($statutOne, $statutTwo);
     }
@@ -52,13 +52,13 @@ class StatutTest extends TestCase
     public function testGetAll($lastId){
         global $pdo;
         $model = new \model\Statut($pdo);
-        $statutOne = $model->getById($lastId, $model);
+        $statutOne = $model->getById($lastId);
         $statutPost = [$model->getDescription() => "Relayé au MTQ"];
-        $model->postSomething($statutPost, $model);
+        $model->postSomething($statutPost);
         $secondId = $pdo->lastInsertId();
-        $statutTwo = $model->getById($secondId, $model);
+        $statutTwo = $model->getById($secondId);
 
-        $array = $model->getAll($model);
+        $array = $model->getAll();
 
         $this->assertEquals($statutOne, $array[0]);
         $this->assertEquals($statutTwo, $array[1]);
@@ -72,8 +72,8 @@ class StatutTest extends TestCase
     public function testDeleteById($lastId){
         global $pdo;
         $model = new \model\Statut($pdo);
-        $result = $model->deleteById($lastId, $model);
-        $hopeFalse = $model->getById($lastId, $model);
+        $result = $model->deleteById($lastId);
+        $hopeFalse = $model->getById($lastId);
         $this->assertTrue($result);
         $this->assertFalse($hopeFalse);
 

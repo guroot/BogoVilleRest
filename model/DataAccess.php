@@ -12,77 +12,118 @@ namespace model;
 class DataAccess
 {
 
+
     /**
      * @var \PDO
      */
     protected $_pdo;
+    protected $table_name;
+    protected $id;
+    protected $all_column;
+    protected $nom;
+    protected $description;
+
+    /**
+     * @return mixed
+     */
+    public function getTableName()
+    {
+        return $this->table_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllColumn()
+    {
+        return $this->all_column;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
 
     /**
      * Méthode qui va chercher un ou des problème(s) par un ID.
      *
      * @param $id id du problème à chercher
-     * @param $model
      * @return mixed résultat de la requête à la base de données.
      */
-    public function getById($id, $model){
-        $request = $this->_pdo->prepare("SELECT * FROM  " . $model->getTableName() . " WHERE " . $model->getId() ." = :". $model->getId());
-        $request->execute([$model->getId() => $id]);
+    public function getById($id){
+        $request = $this->_pdo->prepare("SELECT * FROM  " . $this->getTableName() . " WHERE " . $this->getId() ." = :". $this->getId());
+        $request->execute([$this->getId() => $id]);
         return $request->fetchObject();
     }
 
     /**
      * @param $id
-     * @param $model
      * @return bool
      */
-    public function deleteByID($id,$model){
-        $request = $this->_pdo->prepare("DELETE FROM " . $model->getTableName() . " WHERE " . $model->getId() .
-            " = :" . $model->getId());
-        return $request->execute([$model->getId() => $id]);
+    public function deleteByID($id){
+        $request = $this->_pdo->prepare("DELETE FROM " . $this->getTableName() . " WHERE " . $this->getId() .
+            " = :" . $this->getId());
+        return $request->execute([$this->getId() => $id]);
     }
 
     /**
      * @param $id
-     * @param $model
      * @param $dataArray
      * @return bool
      */
-    public function updateByID($id, $dataArray , $model){
-        unset($dataArray["path"]) ;
-        $query = "UPDATE " . $model->getTableName() . " SET ";
-        foreach ($dataArray as $keys => $value){
+    public function updateByID($id, $dataArray)
+    {
+        unset($dataArray["path"]);
+        $query = "UPDATE " . $this->getTableName() . " SET ";
+        foreach ($dataArray as $keys => $value) {
             $query .= array_key_last($dataArray) === $keys ? $keys . " = :" . $keys : $keys . " = :" . $keys . ", ";
         }
-        $query .= " WHERE " . $model->getId() . " = :" . $model->getId() ;
+        $query .= " WHERE " . $this->getId() . " = :" . $this->getId();
         $request = $this->_pdo->prepare($query);
-        return $request->execute(array_merge($dataArray , array($model->getId()  => $id)));
+        return $request->execute(array_merge($dataArray, array($this->getId() => $id)));
     }
 
     /**
-     * @param $model
      * @return array
      */
-    public function getAll($model){
-        $request = $this->_pdo->prepare("SELECT * FROM " . $model->getTableName());
+    public function getAll(){
+        $request = $this->_pdo->prepare("SELECT * FROM " . $this->getTableName());
         $request->execute();
         return $request->fetchAll(\PDO::FETCH_OBJ);
     }
 
     /**
      * @param $dataArray
-     * @param $model
      * @return bool
      */
-    public function postSomething($dataArray, $model){
+    public function postSomething($dataArray){
         unset($dataArray["path"]);
-        //unset($getAllColumn[$idColumn]);
-        $allColumn = "`" . implode( "`,`", $model->getAllColumn()) . "`";
+        $allColumn = "`" . implode( "`,`", $this->getAllColumn()) . "`";
 
-        $sql = "INSERT INTO " . $model->getTableName() . "(" . $allColumn . ")"
-            . " VALUES ( :" . implode(", :", $model->getAllColumn()) . ")" ;
+        $sql = "INSERT INTO " . $this->getTableName() . "(" . $allColumn . ")"
+            . " VALUES ( :" . implode(", :", $this->getAllColumn()) . ")" ;
 
-        $finalArray = array_merge([$model->getId() => NULL],$dataArray);
+        $finalArray = array_merge([$this->getId() => NULL],$dataArray);
         // Vérification si la valeur est une chaine vide ou null en format string
         foreach ($finalArray as $key => $value){
             if ($value === '' || strtolower($value) === 'null' ) {

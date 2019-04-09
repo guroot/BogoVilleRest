@@ -28,28 +28,28 @@ class VoirieProblemeTest extends TestCase
         global $pdo;
         $type = new \model\Type($pdo);
         $typePost = [$type->getNom() => "Patate", $type->getDescription() => "Écrasé sur la route"];
-        $type->postSomething($typePost, $type);
+        $type->postSomething($typePost);
         $typeId = $pdo->lastInsertId();
 
         $region = new \model\Region($pdo);
         $regionPost = [$region->getNom() => "Mauricie"];
-        $region->postSomething($regionPost, $region);
+        $region->postSomething($regionPost);
         $regionId = $pdo->lastInsertId();
 
         $ville = new \model\Ville($pdo);
         $villePost = [$ville->getRegion() => $regionId, $ville->getNom() => "Shawinigan", $ville->getActif() => 1];
-        $ville->postSomething($villePost, $ville);
+        $ville->postSomething($villePost);
         $villeId = $pdo->lastInsertId();
 
         $statut = new \model\Statut($pdo);
         $statutPost = [$statut->getDescription() => "En traitement"];
-        $statut->postSomething($statutPost, $statut);
+        $statut->postSomething($statutPost);
         $statutId = $pdo->lastInsertId();
 
         $media = new \model\Media($pdo);
         $mediaPost = [$media->getFilename() => "coquine.jpg", $media->getMime() => "ffjdnjknskgns",
                         $media->getMedia() => 0011011100011000100010];
-        $media->postSomething($mediaPost, $media);
+        $media->postSomething($mediaPost);
         $mediaId = $pdo->lastInsertId();
 
         return [$typeId, $villeId, $statutId, $mediaId];
@@ -72,10 +72,10 @@ class VoirieProblemeTest extends TestCase
             $model->getLongitude() => 987.654321,
             $model->getIdstatut() => $allStuff[2]
         ];
-        $model->postSomething($firtsArray, $model);
+        $model->postSomething($firtsArray);
         var_dump($firtsArray);
         $lastId = $pdo->lastInsertId();
-        $secondArray = $model->getById($lastId,$model);
+        $secondArray = $model->getById($lastId);
         $lastChance = array_merge([$model->getId() => $lastId], $firtsArray) ;
 
         $this->assertEquals((object)$lastChance, $secondArray );
@@ -94,15 +94,15 @@ class VoirieProblemeTest extends TestCase
         $model = new \model\VoirieProbleme($pdo);
 
         // Va chercher le dernier enregistrement fait.
-        $test = $model->getById($insertedId, $model);
+        $test = $model->getById($insertedId);
         $key = $model->getCommentaire();
         // Remplace le champs qui va etre changé.
         $test->$key = "testUpdateProblem";
         // Update la valeur
-        $model->updatebyId($insertedId ,[$model->getCommentaire() => "testUpdateProblem"], $model);
+        $model->updatebyId($insertedId ,[$model->getCommentaire() => "testUpdateProblem"]);
 
         // Va rechercher "l'objet" qui vient d'être modifié
-        $test2 = $model->getById($insertedId,$model);
+        $test2 = $model->getById($insertedId);
         $this->assertEquals($test,$test2);
 
     }
@@ -127,13 +127,13 @@ class VoirieProblemeTest extends TestCase
             $model->getIdstatut() => $second[2]
         ];
 
-        $problemOne = $model->getById($firtsInsert, $model);
-        $model->postSomething($secondArray, $model);
+        $problemOne = $model->getById($firtsInsert);
+        $model->postSomething($secondArray);
 
 
-        $problemTwo = $model->getById($pdo->lastInsertId(), $model);
+        $problemTwo = $model->getById($pdo->lastInsertId());
 
-        $array = $model->getAll($model);
+        $array = $model->getAll();
 
         var_dump($problemTwo);
         var_dump($array);
@@ -149,8 +149,8 @@ class VoirieProblemeTest extends TestCase
     public function testDeleteById($lastId){
         global $pdo;
         $model = new \model\VoirieProbleme($pdo);
-        $result = $model->deleteById($lastId, $model);
-        $hopeFalse = $model->getById($lastId, $model);
+        $result = $model->deleteById($lastId);
+        $hopeFalse = $model->getById($lastId);
         $this->assertTrue($result);
         $this->assertFalse($hopeFalse);
 
@@ -171,10 +171,10 @@ class VoirieProblemeTest extends TestCase
         $problemFour = $this->insertProblem("Commentaire 4", $townOneId, $type,$statut);
         $problemArray = $model->getProblemsByTownId($townOneId);
         $problemArrayTwo = $model->getProblemsByTownId($townTwoId);
-        $problemGETOne = $model->getById($problemOne, $model);
-        $problemGETTwo = $model->getById($problemTwo, $model);
-        $problemGETThree = $model->getById($problemThree, $model);
-        $problemGETFour = $model->getById($problemFour, $model);
+        $problemGETOne = $model->getById($problemOne);
+        $problemGETTwo = $model->getById($problemTwo);
+        $problemGETThree = $model->getById($problemThree);
+        $problemGETFour = $model->getById($problemFour);
 
         $this->assertEquals($problemGETOne, $problemArray[0]);
         $this->assertEquals($problemGETTwo, $problemArray[1]);
@@ -203,15 +203,15 @@ class VoirieProblemeTest extends TestCase
         $problemArrayOne = $model->getProblemsByTypeIdAndTownId($typeOne,$townTwoId );
         $problemArrayTwo = $model->getProblemsByTypeIdAndTownId($typeTwo, $townOneId);
 
-        $this->assertEquals($model->getById($problemOneId, $model),$problemArrayOne[0]);
-        $this->assertEquals($model->getById($problemTwoId, $model),$problemArrayOne[1]);
-        $this->assertEquals($model->getById($problemFourId, $model),$problemArrayOne[2]);
-        $this->assertEquals($model->getById($problemSixId, $model),$problemArrayOne[3]);
-        $this->assertEquals($model->getById($problemSevenId, $model),$problemArrayOne[4]);
+        $this->assertEquals($model->getById($problemOneId),$problemArrayOne[0]);
+        $this->assertEquals($model->getById($problemTwoId),$problemArrayOne[1]);
+        $this->assertEquals($model->getById($problemFourId),$problemArrayOne[2]);
+        $this->assertEquals($model->getById($problemSixId),$problemArrayOne[3]);
+        $this->assertEquals($model->getById($problemSevenId),$problemArrayOne[4]);
 
-        $this->assertEquals($model->getById($problemThreeId, $model),$problemArrayTwo[0]);
-        $this->assertEquals($model->getById($problemFiveId, $model),$problemArrayTwo[1]);
-        $this->assertEquals($model->getById($problemEightId, $model),$problemArrayTwo[2]);
+        $this->assertEquals($model->getById($problemThreeId),$problemArrayTwo[0]);
+        $this->assertEquals($model->getById($problemFiveId),$problemArrayTwo[1]);
+        $this->assertEquals($model->getById($problemEightId),$problemArrayTwo[2]);
 
     }
 
@@ -237,15 +237,15 @@ class VoirieProblemeTest extends TestCase
         $problemArrayOne = $model->getProblemsByStatusIdAndTownId($statutOne,$townOneId );
         $problemArrayTwo = $model->getProblemsByStatusIdAndTownId($statutTwo,$townTwoId );
 
-        $this->assertEquals($model->getById($problemOneId, $model), $problemArrayOne[0]);
-        $this->assertEquals($model->getById($problemThreeId, $model), $problemArrayOne[1]);
-        $this->assertEquals($model->getById($problemFiveId, $model), $problemArrayOne[2]);
-        $this->assertEquals($model->getById($problemSevenId, $model), $problemArrayOne[3]);
+        $this->assertEquals($model->getById($problemOneId), $problemArrayOne[0]);
+        $this->assertEquals($model->getById($problemThreeId), $problemArrayOne[1]);
+        $this->assertEquals($model->getById($problemFiveId), $problemArrayOne[2]);
+        $this->assertEquals($model->getById($problemSevenId), $problemArrayOne[3]);
 
-        $this->assertEquals($model->getById($problemTwoId, $model), $problemArrayTwo[0]);
-        $this->assertEquals($model->getById($problemFourId, $model), $problemArrayTwo[1]);
-        $this->assertEquals($model->getById($problemSixId, $model), $problemArrayTwo[2]);
-        $this->assertEquals($model->getById($problemEightId, $model), $problemArrayTwo[3]);
+        $this->assertEquals($model->getById($problemTwoId), $problemArrayTwo[0]);
+        $this->assertEquals($model->getById($problemFourId), $problemArrayTwo[1]);
+        $this->assertEquals($model->getById($problemSixId), $problemArrayTwo[2]);
+        $this->assertEquals($model->getById($problemEightId), $problemArrayTwo[3]);
 
     }
 
@@ -259,7 +259,7 @@ class VoirieProblemeTest extends TestCase
             $problem->getIdmedia() => "",
             $problem->getCommentaire() => $comment,
             $problem->getLongitude() => 111.1111111,
-            $problem->getLatitude() => 222.2222222], $problem);
+            $problem->getLatitude() => 222.2222222]);
 
         return $pdo->lastInsertId();
     }
@@ -268,7 +268,7 @@ class VoirieProblemeTest extends TestCase
     private function insertStatus($description){
         global $pdo;
         $status = new Statut($pdo);
-        $statusResult = $status->postSomething([$status->getDescription() => $description], $status);
+        $statusResult = $status->postSomething([$status->getDescription() => $description]);
         if ($statusResult){
             return $pdo->lastInsertId();
         }
@@ -278,7 +278,7 @@ class VoirieProblemeTest extends TestCase
     private function insertRegion(){
         global $pdo;
         $region = new Region($pdo);
-        $regionResult = $region->postSomething([$region->getNom() => "Mauricie"], $region);
+        $regionResult = $region->postSomething([$region->getNom() => "Mauricie"]);
         if ($regionResult){
             return $pdo->lastInsertId();
         }
@@ -290,7 +290,7 @@ class VoirieProblemeTest extends TestCase
         $ville = new Ville($pdo);
         if ($regionId > 0){
             $ville->postSomething([$ville->getRegion() => $regionId, $ville->getNom() => $townName,
-                $ville->getActif() => 1], $ville);
+                $ville->getActif() => 1]);
             return $pdo->lastInsertId();
         }
         return null;
@@ -300,7 +300,7 @@ class VoirieProblemeTest extends TestCase
         global $pdo;
         $type = new Type($pdo);
         $typeResult = $type->postSomething([$type->getNom() => $nom,
-            $type->getDescription() => $description], $type);
+            $type->getDescription() => $description]);
         if ($typeResult){
             return $pdo->lastInsertId();
         }

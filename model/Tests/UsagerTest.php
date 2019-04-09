@@ -23,12 +23,11 @@ class UsagerTest extends TestCase
         global $pdo;
 
         $regionModel = new \model\Region($pdo);
-        $regionModel->postSomething([$regionModel->getNom() => "Québec"], $regionModel);
+        $regionModel->postSomething([$regionModel->getNom() => "Québec"]);
         $regionId = $pdo->lastInsertId();
 
         $villeModel = new \model\Ville($pdo);
-        $villeModel->postSomething([$villeModel->getNom() => "Lévis", $villeModel->getRegion() => $regionId, $villeModel->getActif() => 1],
-            $villeModel);
+        $villeModel->postSomething([$villeModel->getNom() => "Lévis", $villeModel->getRegion() => $regionId, $villeModel->getActif() => 1]);
         $villeId = $pdo->lastInsertId();
         $usagerModel = new \model\Usager($pdo);
 
@@ -37,11 +36,11 @@ class UsagerTest extends TestCase
                         $usagerModel->getCreateTime() => "2019-01-12",$usagerModel->getPassword() => "admin"];
 
 
-        $usagerModel->postSomething($firtsArray, $usagerModel);
+        $usagerModel->postSomething($firtsArray);
         $lastId = $pdo->lastInsertId();
 
         var_dump($lastId);
-        $secondArray = $usagerModel->getById($lastId, $usagerModel);
+        $secondArray = $usagerModel->getById($lastId);
 
         $lastChance = array_merge([$usagerModel->getId() => $lastId], $firtsArray) ;
         var_dump($lastChance);
@@ -63,16 +62,16 @@ class UsagerTest extends TestCase
         $model = new \model\Usager($pdo);
 
         // Va chercher le dernier enregistrement fait.
-        $test = $model->getById($insertedId, $model);
+        $test = $model->getById($insertedId);
         $key = $model->getMail();
         // Remplace le champs qui va etre changé.
         $test->$key = "example.com";
         // Update la valeur
-        $model->updatebyId($insertedId ,[$model->getMail() => "example.com"], $model);
+        $model->updatebyId($insertedId ,[$model->getMail() => "example.com"]);
 
         var_dump($test);
         // Va rechercher "l'objet" qui vient d'être modifié
-        $test2 = $model->getById($insertedId, $model);
+        $test2 = $model->getById($insertedId);
         var_dump($test2);
         $this->assertEquals($test,$test2);
 
@@ -90,12 +89,12 @@ class UsagerTest extends TestCase
             , $model->getGoogleid() => "", $model->getIdville() => 1, $model->getCreateTime() => "2017-08-26"
             ,$model->getPassword() => "password"];
 
-        $problemOne = $model->getById($firtsInsert,$model);
+        $problemOne = $model->getById($firtsInsert);
         $model->postSomething($secondArray, $model);
         $secondInsert = $pdo->lastInsertId();
-        $problemTwo = $model->getById($secondInsert , $model);
+        $problemTwo = $model->getById($secondInsert);
 
-        $array = $model->getAll($model);
+        $array = $model->getAll();
 
         $this->assertEquals($problemOne, $array[0]);
         $this->assertEquals($problemTwo, $array[1]);
@@ -109,8 +108,9 @@ class UsagerTest extends TestCase
     public function testDeleteById($lastId){
         global $pdo;
         $model = new \model\Usager($pdo);
-        $result = $model->deleteById($lastId, $model);
-        $hopeFalse = $model->getById($lastId, $model);
+        $result = $model->deleteById($lastId);
+        $hopeFalse = $model->getById($lastId);
+        $this->assertTrue($result);
         $this->assertFalse($hopeFalse);
 
     }

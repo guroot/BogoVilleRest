@@ -12,9 +12,6 @@ namespace model;
 class VoirieProbleme extends DataAccess
 {
 
-    private $table_name;
-    private $id;
-    private $all_column;
     private $type;
     private $idstatut;
     private $idmedia;

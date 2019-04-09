@@ -23,9 +23,9 @@ class RegionTest extends TestCase
         global $pdo;
         $regionModel = new \model\Region($pdo);
         $regionPost = [$regionModel->getNom() => "Capitale Nationale"];
-        $regionModel->postSomething($regionPost,$regionModel);
+        $regionModel->postSomething($regionPost);
         $regionId = $pdo->lastInsertId();
-        $regionGet = $regionModel->getById($regionId,$regionModel);
+        $regionGet = $regionModel->getById($regionId);
 
         $this->assertEquals($regionGet, (object)array_merge([$regionModel->getId() => $regionId], $regionPost));
 
@@ -44,15 +44,15 @@ class RegionTest extends TestCase
         $model = new \model\Region($pdo);
 
         // Va chercher le dernier enregistrement fait.
-        $test = $model->getById($insertedId, $model);
+        $test = $model->getById($insertedId);
         $key = $model->getNom();
         // Remplace le champs qui va etre changé.
         $test->$key = "Mauricie";
         // Update la valeur
-        $model->updatebyId($insertedId ,[$model->getNom() => "Mauricie"], $model);
+        $model->updatebyId($insertedId ,[$model->getNom() => "Mauricie"]);
 
         // Va rechercher "l'objet" qui vient d'être modifié
-        $test2 = $model->getById($insertedId, $model);
+        $test2 = $model->getById($insertedId);
         $this->assertEquals($test,$test2);
 
     }
@@ -65,12 +65,12 @@ class RegionTest extends TestCase
         global $pdo;
         $model = new \model\Region($pdo);
         $regionPost = [$model->getNom() => "Bas St-Laurent"];
-        $problemOne = $model->getById($firtsInsert, $model);
-        $model->postSomething($regionPost,$model);
+        $problemOne = $model->getById($firtsInsert);
+        $model->postSomething($regionPost);
         $secondInsert = $pdo->lastInsertId();
-        $problemTwo = $model->getById($secondInsert , $model);
+        $problemTwo = $model->getById($secondInsert);
 
-        $array = $model->getAll($model);
+        $array = $model->getAll();
         $this->assertEquals($problemOne, $array[0]);
         $this->assertEquals($problemTwo, $array[1]);
     }
@@ -83,8 +83,8 @@ class RegionTest extends TestCase
     public function testDeleteById($lastId){
         global $pdo;
         $model = new \model\Region($pdo);
-        $result = $model->deleteById($lastId, $model);
-        $hopeFalse = $model->getById($lastId, $model);
+        $result = $model->deleteById($lastId);
+        $hopeFalse = $model->getById($lastId);
         $this->assertTrue($result);
         $this->assertFalse($hopeFalse);
 

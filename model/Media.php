@@ -7,36 +7,10 @@ namespace model;
 class Media extends DataAccess
 {
 
-    private $table_name;
-    private $id;
-    private $all_column;
     private $media;
     private $mime;
     private $filename;
 
-    /**
-     * @return string
-     */
-    public function getTableName(): string
-    {
-        return $this->table_name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllColumn(): array
-    {
-        return $this->all_column;
-    }
 
     /**
      * @return string

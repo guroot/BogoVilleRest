@@ -44,16 +44,16 @@ class RegionTest extends TestCase
         $model = new \model\Region($pdo);
 
         // Va chercher le dernier enregistrement fait.
-        $test = $model->getById($insertedId);
+        $regionGetOne = $model->getById($insertedId);
         $key = $model->getNom();
         // Remplace le champs qui va etre changé.
-        $test->$key = "Mauricie";
+        $regionGetOne->$key = "Mauricie";
         // Update la valeur
         $model->updatebyId($insertedId ,[$model->getNom() => "Mauricie"]);
 
         // Va rechercher "l'objet" qui vient d'être modifié
-        $test2 = $model->getById($insertedId);
-        $this->assertEquals($test,$test2);
+        $regionGet2 = $model->getById($insertedId);
+        $this->assertEquals($regionGetOne,$regionGet2);
 
     }
 

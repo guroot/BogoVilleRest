@@ -21,10 +21,12 @@ class VoirieProblemeTest extends TestCase
         $pdo->exec("TRUNCATE TABLE " . UsagerProblemesTable::$TABLE_NAME);
         $pdo->exec("SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE ".VoirieProblemeTable::$table_name. ";" .
             "SET FOREIGN_KEY_CHECKS = 1;");
+
     }
 
 
-    private function insertThings(){
+
+    private function setUpData(){
         global $pdo;
         $type = new \model\Type($pdo);
         $typePost = [$type->getNom() => "Patate", $type->getDescription() => "Écrasé sur la route"];
@@ -61,7 +63,7 @@ class VoirieProblemeTest extends TestCase
      */
     public function testPostProblem(){
         global $pdo;
-        $allStuff = $this->insertThings();
+        $allStuff = $this->setUpData();
         $model = new \model\VoirieProbleme($pdo);
         $firtsArray = [
             $model->getType() => $allStuff[0],
@@ -73,7 +75,6 @@ class VoirieProblemeTest extends TestCase
             $model->getIdstatut() => $allStuff[2]
         ];
         $model->postSomething($firtsArray);
-        var_dump($firtsArray);
         $lastId = $pdo->lastInsertId();
         $secondArray = $model->getById($lastId);
         $lastChance = array_merge([$model->getId() => $lastId], $firtsArray) ;
@@ -115,7 +116,7 @@ class VoirieProblemeTest extends TestCase
     public function testGetAllProblem($firtsInsert){
         global $pdo;
         $model = new \model\VoirieProbleme($pdo);
-        $second = $this->insertThings();
+        $second = $this->setUpData();
         $secondArray = [
             $model->getType() => $second[0],
             $model->getCommentaire() => "Patate",

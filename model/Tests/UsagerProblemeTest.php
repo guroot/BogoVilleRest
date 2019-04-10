@@ -128,7 +128,7 @@ class UsagerProblemeTest extends TestCase
      * @param $array
      *
      *  [$typeId, $villeId, $statutId, $problemId, $usagerId, $userGet,
-    $problemGet, $userGet2, $problemGet2, $usagerId2, $problemId2 ];
+     * $problemGet, $userGet2, $problemGet2, $usagerId2, $problemId2 ];
      */
     public function testGetProblemsByUserId($array){
         global $pdo;

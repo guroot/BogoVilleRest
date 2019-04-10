@@ -116,7 +116,6 @@ class VoirieProblemeTest extends TestCase
         global $pdo;
         $model = new \model\VoirieProbleme($pdo);
         $second = $this->insertThings();
-        var_dump($second);
         $secondArray = [
             $model->getType() => $second[0],
             $model->getCommentaire() => "Patate",
@@ -134,9 +133,6 @@ class VoirieProblemeTest extends TestCase
         $problemTwo = $model->getById($pdo->lastInsertId());
 
         $array = $model->getAll();
-
-        var_dump($problemTwo);
-        var_dump($array);
         $this->assertEquals($problemOne, $array[0]);
         $this->assertEquals($problemTwo, $array[1]);
     }

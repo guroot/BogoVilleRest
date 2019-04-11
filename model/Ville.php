@@ -43,8 +43,8 @@ class Ville
     }
 
     public function insert($nom,$region,$actif){
-        $prep =  $this->_pdo->prepare("INSERT INTO ville(nom,region,actif) VALUES(?, ?, ?)");
-        $prep->execute(["$nom","$region", "$actif"]);
+        $prep =  $this->_pdo->prepare("INSERT INTO ville(nom,region,actif) VALUES(:nom,:region,:actif)");
+        return $prep->execute([':nom' => $nom,':region' =>$region, ':actif' =>$actif]);
 
     }
     public function deleteByid($id){
@@ -54,7 +54,6 @@ class Ville
     }
     public function upDateById($id,$nom,$region,$actif){
         $query = "UPDATE ville SET nom = ?, region=?, actif=? WHERE idville=?";
-        var_dump($id,$nom,$region,$actif);
         $statement = $this->_pdo->prepare($query);
         $statement->execute([$nom,$region,$actif,$id]);
 

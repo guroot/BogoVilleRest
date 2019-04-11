@@ -9,7 +9,7 @@
 namespace model;
 
 
-use PHPUnit\Framework\TestCase;
+use \PHPUnit\Framework\TestCase;
 
 class VilleTest extends TestCase
 {
@@ -75,7 +75,14 @@ class VilleTest extends TestCase
             ,(object)["idville"=>2,"nom"=>"trois","region"=>1,"actif"=>1]]);
 
     }
-
-
+    public function testVilleById(){
+        global $pdo;
+        $ville = new \model\Ville($pdo);
+        $pdo->exec("SET FOREIGN_KEY_CHECKS=0;TRUNCATE TABLE ville;SET FOREIGN_KEY_CHECKS=1;");
+        $ville->insert("Montréal","1","1");
+        $id=$pdo->lastInsertId();
+        $tabville=$ville->getById($id);
+        $this->assertEquals($tabville,(object)["idville"=>$id,"nom"=>"Montréal","region"=>1,"actif"=>1]);
+    }
 
 }

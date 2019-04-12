@@ -9,7 +9,6 @@
 // Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';
 
-ini_set('display_errors',false);
 
 $configuration = [
     'settings' => [
@@ -24,22 +23,13 @@ $app = new \Slim\App($c);
 
 // Add route callbacks
 $app->get('/', function ($request, $response, $args) {
-
     return $response->withStatus(200)->write('Ceci est un service Rest et ne devrait pas être accédé directement');
 });
 
 
+$pdo = new PDO('mysql:host=localhost;dbname=bogoville', 'root', 'root');
 
-$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
 
-//********************************************************************************
-//villes
-//********************************************************************************
-$app->get('/ville', function ($request, $response, $args) use($pdo){
-    $villeModel = new \model\Ville($pdo);
-    $data = $villeModel->getVille();
-    if($data)
-        $response = $response->withJson($villeModel->getVille());
 
 
 //**********************************************************************************************************************
@@ -401,11 +391,12 @@ $app->get('/region', function ($request, $response, $args) use($pdo){
 //villes by id
 //********************************************************************************
 
-$app->get('/ville/{id}', function ($request, $response, $args) use($pdo){
+$app->get('/ville/{id}', function ($request, $response, $args) use ($pdo) {
     $villeModel = new \model\Ville($pdo);
     $data = $villeModel->getById($args['id']);
-    if($data)
+    if ($data)
         $response = $response->withJson($villeModel->getById($args['id']));
+});
 
 $app->get('/region/{id}', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
@@ -442,7 +433,7 @@ $app->delete('/ville/{id}',function ($request,$response,$args) use ($pdo){
 //**************************************************************
 // mise à jour les villes
 //**************************************************************
-$app->put('/ville/{id}',function($request,$response,$args) use ($pdo){
+
 
 $app->post('/region', function ($request, $response, $args) use($pdo){
     $regionModel = new \model\Region($pdo);
@@ -515,7 +506,6 @@ $app->post('/statut', function ($request, $response, $args) use($pdo){
             ->write('Un problème est survenu.');
     return $response;
 });
-
 
 
 // Run application

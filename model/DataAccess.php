@@ -96,7 +96,7 @@ class DataAccess
         unset($dataArray["path"]);
         $query = "UPDATE " . $this->getTableName() . " SET ";
         foreach ($dataArray as $keys => $value) {
-            $query .= array_key_last($dataArray) === $keys ? $keys . " = :" . $keys : $keys . " = :" . $keys . ", ";
+            $query .= \array_key_last($dataArray) === $keys ? $keys . " = :" . $keys : $keys . " = :" . $keys . ", ";
         }
         $query .= " WHERE " . $this->getId() . " = :" . $this->getId();
         $request = $this->_pdo->prepare($query);

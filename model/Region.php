@@ -14,7 +14,6 @@ class Region extends DataAccess {
     public function __construct($pdo)
     {
         parent::__construct($pdo);
-        $this->_tableName = RegionTable::TABLE_NAME;
         $this->_idColumnName = RegionTable::COLUMNS['ID'];
     }
 

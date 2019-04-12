@@ -1,17 +1,6 @@
 <?php
 namespace model;
 
-interface RequestInterface {
-    public function getOneShitById($id);
-    public function getAllTheShit();
-    public function deleteOneShitById($id);
-    public function insertTheShit(array $columns/*, array $dataToInsert*/);
-    public function updateTheShit($id, array $data);
-    public function getTableName();
-    public function getIdColumnName();
-    public function getNumberOfShits();
-}
-
 class DataAccess implements RequestInterface{
 
     /**
@@ -27,6 +16,8 @@ class DataAccess implements RequestInterface{
      */
     public function __construct($pdo){
         $this->_pdo = $pdo;
+        $tmp_array = explode("\\", get_class($this));
+        $this->_tableName = lcfirst(end($tmp_array));
     }
 
     /**
@@ -35,7 +26,7 @@ class DataAccess implements RequestInterface{
      * @param $id ID de l'objet dans sa table SQL
      * @return mixed L'objet
      */
-    public function getOneShitById($id){
+    public function getOneById($id){
         $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE {$this->_idColumnName} =?");
         $statement->execute([$id]);
         return $statement->fetchObject();
@@ -44,7 +35,7 @@ class DataAccess implements RequestInterface{
     /**
      * Retourne toutes les données d'une table
      */
-    public function getAllTheShit(){
+    public function getAll(){
         $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName}");
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_OBJ);
@@ -56,7 +47,7 @@ class DataAccess implements RequestInterface{
      * @param $id The corresponding ID to delete
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
-    public function deleteOneShitById($id){
+    public function deleteWithId($id){
         $statement = $this->_pdo->prepare("DELETE FROM {$this->_tableName} WHERE {$this->_idColumnName}=?");
         return $statement->execute([$id]);
     }
@@ -67,7 +58,7 @@ class DataAccess implements RequestInterface{
      * @param array $datas Associative array with column=>data
      * @return boolean True on success
      */
-    public function insertTheShit(array $datas){
+    public function insert(array $datas){
         unset($datas['path']);
         $sql = "INSERT INTO {$this->_tableName}("
             . implode(",", array_keys($datas))
@@ -85,7 +76,7 @@ class DataAccess implements RequestInterface{
      * @param array $data An associative array of the datas to update. The keys need to
      *        have the same name as the column names
      */
-    public function updateTheShit($id, array $data){
+    public function updateWithId($id, array $data){
         unset($data['path']);
         $copy_data = $data;
         foreach($data as $key=>&$value){
@@ -98,7 +89,13 @@ class DataAccess implements RequestInterface{
         $statement->execute(array_merge(["id"=>$id], $copy_data));
     }
 
-    public function getNumberOfShits(){
+    public function getAllWithEqualCondition($fieldName, $fieldValue){
+        $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE {$this->_tableName}." . $fieldName . " = " .$fieldValue);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getCount(){
 
     }
 

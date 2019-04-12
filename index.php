@@ -9,8 +9,6 @@
 // Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';
 
-$isModelLegit = false;
-
 $configuration = [
     'settings' => [
         'displayErrorDetails' => true,
@@ -22,105 +20,126 @@ $c = new \Slim\Container($configuration);
 $app = new \Slim\App($c);
 
 // Add route callbacks
-$app->get('/', function ($request, $response, $args) {
+$app->get('/', function ($request, $response, $args){
     return $response->withStatus(200)->write('Ceci est un service Rest et ne devrait pas être accédé directement');
 });
 
 $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
 
-/*$app->any("\{model}\*", function ($request, $response, $args) use($pdo, $isModelLegit){
-    $test = false;
-    $modelName = $args['model'];
-    ucfirst($modelName);
-    $index = 1;
-    while(!$test){
-        if(substr($modelName, $index, 1) == "_" && $index !== strlen($modelName)-1 ){
-            substr_replace($modelName, strtoupper(substr($modelName, $index+1, 1)), $index+1, 1);
-        }
-        if($index == strlen($modelName)-1){
-            $test = true;
-            $modelName = str_replace("_", '', $modelName);
-        }
-        $index++;
-    }
-    if(is_subclass_of($args['model'], get_class(\model\DataAccess::class))){
-        global $isModelLegit;
-        $isModelLegit= true;
-    };
-});
-
-if($isModelLegit) {*/
-
     $app->get("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        $className =  "\model\\".ucfirst($args['model']);
-        $myGenericModel = new $className($pdo);
-        $data = $myGenericModel->getOneShitById($args['id']);
-        if ($data)
-            $response = $response->withJson($myGenericModel->getOneShitById($args['id']));
-        else
-            return $response->withStatus(404)
+        if(\model\Legitimator::legitimate($args['model'])) {
+            $className = "\model\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $data = $myGenericModel->getOneById($args['id']);
+            if ($data)
+                $response = $response->withJson($myGenericModel->getOneById($args['id']));
+            else
+                return $response->withStatus(404)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Enregistrement introuvable');
+            return $response;
+        } else {
+            return $response->withStatus(400)
                 ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('Enregistrement introuvable');
-        return $response;
+                ->write('I\'m affraid I can\'t do that');
+        }
     });
 
     $app->get("/{model}", function ($request, $response, $args) use ($pdo) {
-        $className =  "\model\\".ucfirst($args['model']);
-        $myGenericModel = new $className($pdo);
-        $data = $myGenericModel->getAllTheShit();
-        if ($data)
-            $response = $response->withJson($myGenericModel->getAllTheShit());
-        else
-            return $response->withStatus(404)
+        if(\model\Legitimator::legitimate($args['model'])) {
+            $className = "\model\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $data = $myGenericModel->getAll();
+            if ($data)
+                $response = $response->withJson($myGenericModel->getAll());
+            else
+                return $response->withStatus(404)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Enregistrement introuvable');
+            return $response;
+        } else {
+            return $response->withStatus(400)
                 ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('Enregistrement introuvable');
-        return $response;
+                ->write('I\'m affraid I can\'t do that');
+        }
+    });
+
+    $app->get("/{field}/{fieldValue}/{model}", function ($request, $response, $args) use ($pdo) {
+        if(\model\Legitimator::legitimate($args['model'])) {
+            $className = "\model\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $event = new \model\Evenement($pdo);
+            $event->getAllWithEqualCondition($args['fieldValue'], $args['field']);
+            die();
+            $data = $myGenericModel->getAllWithEqualCondition($args['fieldValue'], $args['field']);
+            if ($data)
+                $response = $response->withJson(getAllWithEqualCondition($args['field'], $args['fieldValue']));
+            else
+                return $response->withStatus(404)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Enregistrement introuvable');
+            return $response;
+        } else {
+            return $response->withStatus(400)
+                ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                ->write('I\'m affraid I can\'t do that');
+        }
     });
 
     $app->post("/{model}", function ($request, $response, $args) use ($pdo) {
-        $className = "\model\\".ucfirst($args['model']);
-        $myGenericModel = new $className($pdo);
-        $data = $request->getParsedBody();
-        if($data)
-            $response = $response->withJson($myGenericModel->insertTheShit($request->getParams(), $data));
-        else
-            return $response->withStatus(500)
-                ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('Cannot insert the shit');
+        if(\model\Legitimator::legitimate($args['model'])) {
+            $className = "\model\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $data = $request->getParsedBody();
+            if ($data)
+                $response = $response->withJson($myGenericModel->insert($request->getParams(), $data));
+            else
+                return $response->withStatus(500)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Cannot insert the shit');
+        } else {
+            return $response->withStatus(400)
+            ->withHeader('Content-Type', 'application/json;charset=utf-8')
+            ->write('I\'m affraid I can\'t do that');
+        }
     });
 
     $app->put("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        $className = "\model\\".ucfirst($args['model']);
-        $myGenericModel = new $className($pdo);
-        $data = $request->getParsedBody();
-        var_dump($data);
-        if($data)
-            $response = $myGenericModel->updateTheShit($args['id'], $request->getParams());
-        else
-            return $response->withStatus(406)
+        if(\model\Legitimator::legitimate($args['model'])) {
+            $className = "\model\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $data = $request->getParsedBody();
+            if ($data)
+                $response = $myGenericModel->updateWithId($args['id'], $request->getParams());
+            else
+                return $response->withStatus(406)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Cannot update the shit');
+        } else {
+            return $response->withStatus(400)
                 ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('Cannot update the shit');
+                ->write('I\'m affraid I can\'t do that');
+        }
     });
 
     $app->delete("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        $className = "\model\\".ucfirst($args['model']);
-        $myGenericModel = new $className($pdo);
-        $data = $myGenericModel->getOneShitById($args['id']);
-        var_dump($data);
-        if ($data)
-            $response = $response->withJson($myGenericModel->deleteOneShitById($args['id']));
-        else
-            return $response->withStatus(404)
+        if(\model\Legitimator::legitimate($args['model'])) {
+            $className = "\model\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $data = $myGenericModel->getOneById($args['id']);
+            if ($data)
+                $response = $response->withJson($myGenericModel->deleteWithId($args['id']));
+            else
+                return $response->withStatus(404)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Enregistrement introuvable');
+            return $response;
+        } else {
+            return $response->withStatus(400)
                 ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('Enregistrement introuvable');
-        return $response;
+                ->write('I\'m affraid I can\'t do that');
+        }
     });
-
-/*} else {
-    $app->get('/*', function ($request, $response, $args) {
-        return $response->withStatus(201)->write('Roses are red, Violets are blue <br> This is not a place for someone like you');
-    });}*/
-
 
 // Run application
     $app->run();

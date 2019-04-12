@@ -14,13 +14,12 @@ class Evenement extends DataAccess {
     public function __construct($pdo)
     {
         parent::__construct($pdo);
-        $this->_tableName = EvenementTable::TABLE_NAME;
         $this->_idColumnName = EvenementTable::COLUMNS['ID'];
-        $this->_url = EvenementTable::URL_EVENEMENT_ID;
     }
 
     public function getAllColumns(){
         return EvenementTable::getAllColumns();
     }
+
 
 }

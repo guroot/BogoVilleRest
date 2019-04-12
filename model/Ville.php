@@ -53,9 +53,9 @@ class Ville
 
     }
     public function upDateById($id,$nom,$region,$actif){
-        $query = "UPDATE ville SET nom = ?, region=?, actif=? WHERE idville=?";
+        $query = "UPDATE ville SET nom =:nom , region=:region, actif=:actif WHERE idville=?";
         $statement = $this->_pdo->prepare($query);
-        $statement->execute([$nom,$region,$actif,$id]);
+        $statement->execute([':nom' =>$nom,':region' =>$region,':actif'=>$actif,$id]);
 
     }
 

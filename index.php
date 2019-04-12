@@ -27,7 +27,7 @@ $app->get('/', function ($request, $response, $args) {
 
 
 
-$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '00Amentane00');
+$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
 
 //********************************************************************************
 //villes

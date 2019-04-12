@@ -6,7 +6,13 @@ namespace  model;
  * Date: 19-03-24
  * Time: 20:38
  */
-class Region extends DataAccess {
+class Region{
+
+    /**
+     * @var PDO
+     */
+    private $_pdo;
+
 
 
     /**
@@ -22,5 +28,12 @@ class Region extends DataAccess {
     }
 
 
+    // Retourne l'enregistrement à partir
+    // de sa clé primaire auto-increment
+    public function getById($id){
+        $statement = $this->_pdo->prepare("SELECT * FROM region WHERE idregion=?");
+        $statement->execute([$id]);
+        return $statement->fetchObject();
+    }
 
 }

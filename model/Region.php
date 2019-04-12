@@ -14,12 +14,17 @@ class Region{
     private $_pdo;
 
 
+
     /**
      * Region constructor.
      */
     public function __construct($pdo)
     {
         $this->_pdo = $pdo;
+        $this->table_name = RegionTable::$TABLE_NAME;
+        $this->id = RegionTable::$ID;
+        $this->all_column = RegionTable::getAllColums();
+        $this->nom = RegionTable::$NOM;
     }
 
 

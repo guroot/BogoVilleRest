@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace model\accessibleModel;
 
 class DataAccess implements RequestInterface{
 
@@ -9,7 +9,8 @@ class DataAccess implements RequestInterface{
     protected $_pdo;
     protected $_tableName;
     protected $_idColumnName;
-    protected $_url;
+    protected $_columns;
+    //protected $_url;
 
     /**
      * Region constructor.

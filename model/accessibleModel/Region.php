@@ -1,5 +1,5 @@
 <?php
-namespace  model;
+namespace model\accessibleModel;
 /**
  * Created by PhpStorm.
  * User: fletch
@@ -11,14 +11,10 @@ class Region extends DataAccess {
     /**
      * Region constructor.
      */
-    public function __construct($pdo)
-    {
+    public function __construct($pdo){
         parent::__construct($pdo);
         $this->_idColumnName = RegionTable::COLUMNS['ID'];
-    }
-
-    public function getAllColumns(){
-        return RegionTable::getAllColumns();
+        $this->_columns = RegionTable::COLUMNS;
     }
 
 }

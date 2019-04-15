@@ -7,8 +7,10 @@
  */
 
 //Commentaire pour pouvoir push
+//Commentaire pour pouvoir push
+//Commentaire pour pouvoir push
+//Commentaire pour pouvoir push//Commentaire pour pouvoir push
 
-// Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';
 
 $configuration = [

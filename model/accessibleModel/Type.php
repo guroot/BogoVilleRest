@@ -9,12 +9,14 @@
 namespace model\accessibleModel;
 
 
-class Type extends DataAccess {
+class Type extends DataAccess
+{
 
     /**
      * Type constructor.
      */
-    public function __construct($pdo){
+    public function __construct($pdo)
+    {
         parent::__construct($pdo);
         $this->_idColumnName = TypeTable::COLUMNS['ID'];
         $this->_columns = TypeTable::COLUMNS;

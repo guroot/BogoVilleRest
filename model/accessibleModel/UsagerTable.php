@@ -9,7 +9,8 @@
 namespace model\accessibleModel;
 
 
-class UsagerTable{
+class UsagerTable
+{
 
     const TABLE_NAME = "usager";
 

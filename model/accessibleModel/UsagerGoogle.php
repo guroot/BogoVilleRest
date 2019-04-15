@@ -9,12 +9,14 @@
 namespace model\accessibleModel;
 
 
-class UsagerGoogle extends DataAccess {
+class UsagerGoogle extends DataAccess
+{
 
     /**
      * UsagerGoogle constructor.
      */
-    public function __construct($pdo){
+    public function __construct($pdo)
+    {
         parent::__construct($pdo);
         $this->_idColumnName = UsagerGoogleTable::COLUMNS['ID'];
         $this->_columns = UsagerGoogleTable::COLUMNS;

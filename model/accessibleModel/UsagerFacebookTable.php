@@ -9,11 +9,12 @@
 namespace model\accessibleModel;
 
 
-class UsagerFacebookTable{
+class UsagerFacebookTable
+{
 
     const TABLE_NAME = "usager_facebook";
 
     const COLUMNS =
-        ["ID"=>"idFacebook_user"];
+        ["ID" => "idFacebook_user"];
 
 }

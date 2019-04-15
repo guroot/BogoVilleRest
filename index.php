@@ -7,11 +7,10 @@
  */
 
 //Commentaire pour pouvoir push
-//Commentaire pour pouvoir push
-//Commentaire pour pouvoir push
-//Commentaire pour pouvoir push//Commentaire pour pouvoir push
 
 require 'vendor/autoload.php';
+
+
 
 $configuration = [
     'settings' => [

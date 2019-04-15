@@ -9,12 +9,14 @@
 namespace model\accessibleModel;
 
 
-class Usager extends DataAccess {
+class Usager extends DataAccess
+{
 
     /**
      * Usager constructor.
      */
-    public function __construct($pdo){
+    public function __construct($pdo)
+    {
         parent::__construct($pdo);
         $this->_idColumnName = UsagerTable::COLUMNS['ID'];
         $this->_columns = UsagerTable::COLUMNS;

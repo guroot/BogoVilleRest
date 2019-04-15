@@ -7,12 +7,15 @@
  */
 
 namespace model;
+
 use \PHPUnit\Framework\TestCase;
 
 
-class FunctionsTest extends TestCase{
+class FunctionsTest extends TestCase
+{
 
-    public function testLegitimator(){
+    public function testLegitimator()
+    {
         $this->assertTrue(Legitimator::legitimate("evenement"));
         $this->assertTrue(Legitimator::legitimate("region"));
         $this->assertTrue(Legitimator::legitimate("Evenement"));

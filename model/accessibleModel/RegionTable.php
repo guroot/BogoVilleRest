@@ -1,12 +1,14 @@
 <?php
+
 namespace model\accessibleModel;
 
-class RegionTable {
+class RegionTable
+{
 
     const TABLE_NAME = "region";
 
     const COLUMNS =
-        ["ID"=>"idRegion",
-        "NOM"=>"nom"];
+        ["ID" => "idRegion",
+            "NOM" => "nom"];
 
 }

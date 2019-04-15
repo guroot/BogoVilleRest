@@ -9,7 +9,8 @@
 namespace model\accessibleModel;
 
 
-class UsagerGoogleTable{
+class UsagerGoogleTable
+{
 
     const TABLE_NAME = "usager_google";
 

@@ -9,13 +9,14 @@
 namespace model\accessibleModel;
 
 
-class TypeTable {
+class TypeTable
+{
 
     const TABLE_NAME = "type";
 
     const COLUMNS =
-        ["ID"=>"idType",
-            "NOM"=>"nom",
-            "DESCRIPTION"=>"description"];
+        ["ID" => "idType",
+            "NOM" => "nom",
+            "DESCRIPTION" => "description"];
 
 }

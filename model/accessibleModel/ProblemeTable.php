@@ -9,14 +9,15 @@
 namespace model\accessibleModel;
 
 
-class ProblemeTable{
+class ProblemeTable
+{
 
     const TABLE_NAME = "probleme";
 
     const COLUMNS =
         ["ID" => "idProbleme",
             "ID_TYPE" => "idType",
-            "COMMENTAIRE"=>"commentaire",
+            "COMMENTAIRE" => "commentaire",
             "ID_VILLE" => "id_ville",
             "ID_MEDIE" => "id_media",
             "LATITUDE" => "latitude",

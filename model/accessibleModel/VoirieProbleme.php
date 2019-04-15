@@ -9,12 +9,14 @@
 namespace model\accessibleModel;
 
 
-class VoirieProbleme extends DataAccess {
+class VoirieProbleme extends DataAccess
+{
 
     /**
      * VoirieProbleme constructor.
      */
-    public function __construct($pdo){
+    public function __construct($pdo)
+    {
         parent::__construct($pdo);
         $this->_idColumnName = ProblemeTable::COLUMNS['ID'];
         $this->_columns = ProblemeTable::COLUMNS;

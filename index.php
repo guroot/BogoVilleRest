@@ -6,6 +6,8 @@
  * Time: 20:16
  */
 
+//Commentaire pour pouvoir push
+
 // Permet de charger automatiquement les librairies du framework Slim
 require 'vendor/autoload.php';
 

@@ -6,7 +6,7 @@
  * Time: 13:08
  */
 
-namespace model\accessibleModel;
+namespace model\indexTable;
 
 
 class UsagerGoogleTable

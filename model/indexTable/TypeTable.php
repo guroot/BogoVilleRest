@@ -6,7 +6,7 @@
  * Time: 10:40
  */
 
-namespace model\accessibleModel;
+namespace model\indexTable;
 
 
 class TypeTable

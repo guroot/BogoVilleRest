@@ -1,6 +1,11 @@
 <?php
 
 namespace model\accessibleModel;
+
+use \model\indexTable\RegionTable;
+use \model\DataAccess;
+
+
 /**
  * Created by PhpStorm.
  * User: fletch

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kevinteasdaledube
- * Date: 2019-03-27
- * Time: 09:43
- */
+
 
 namespace model;
 
@@ -12,15 +7,17 @@ namespace model;
 class UsagerProblemesTable
 {
 
-    public static $TABLE_NAME = "Usager_Problemes";
-    public static $ID_USAGER = "idUsager";
-    public static $ID_PROBLEME = "id_Problemes";
+    const TABLE_NAME = "usager_probleme";
+
+    const COLUMS = [
+        "ID_USAGER" => "id_usager",
+        "ID_PROBLEME" => "id_probleme"
+
+    ];
 
 
-    public static function getAllColums(){
-        $class = new \ReflectionClass(new self());
-        $data =  $class->getStaticProperties();
-        unset($data[array_search("Usager_Problemes", $data)]);
-        return $data;
-    }
+
+
+
+
 }

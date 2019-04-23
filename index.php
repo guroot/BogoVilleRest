@@ -11,7 +11,6 @@
 require 'vendor/autoload.php';
 
 
-
 $configuration = [
     'settings' => [
         'displayErrorDetails' => true,
@@ -30,8 +29,8 @@ $app->get('/', function ($request, $response, $args){
 $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
 
     $app->get("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'])) {
-            $className = "\model\\" . ucfirst($args['model']);
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $myGenericModel->getOneById($args['id']);
             if ($data)
@@ -49,8 +48,8 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
     });
 
     $app->get("/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'])) {
-            $className = "\model\\" . ucfirst($args['model']);
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $myGenericModel->getAll();
             if ($data)
@@ -63,17 +62,16 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
         } else {
             return $response->withStatus(400)
                 ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('I\'m affraid I can\'t do that');
+                ->write('I\'m affraid I can\'t do that. You may not get those shit. I\'m affraid I have to delete you from this planet.');
         }
     });
 
     $app->get("/{field}/{fieldValue}/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'])) {
-            $className = "\model\\" . ucfirst($args['model']);
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $event = new \model\Evenement($pdo);
             $event->getAllWithEqualCondition($args['fieldValue'], $args['field']);
-            die();
             $data = $myGenericModel->getAllWithEqualCondition($args['fieldValue'], $args['field']);
             if ($data)
                 $response = $response->withJson(getAllWithEqualCondition($args['field'], $args['fieldValue']));
@@ -90,8 +88,8 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
     });
 
     $app->post("/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'])) {
-            $className = "\model\\" . ucfirst($args['model']);
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $request->getParsedBody();
             if ($data)
@@ -103,13 +101,13 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
         } else {
             return $response->withStatus(400)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')
-            ->write('I\'m affraid I can\'t do that');
+            ->write('I\'m affraid I can\'t do that. You may not post this shit. I\'m affraid I have to delete you from this planet.');
         }
     });
 
     $app->put("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'])) {
-            $className = "\model\\" . ucfirst($args['model']);
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $request->getParsedBody();
             if ($data)
@@ -126,8 +124,8 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
     });
 
     $app->delete("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'])) {
-            $className = "\model\\" . ucfirst($args['model']);
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $myGenericModel->getOneById($args['id']);
             if ($data)
@@ -140,7 +138,7 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
         } else {
             return $response->withStatus(400)
                 ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('I\'m affraid I can\'t do that');
+                ->write('I\'m affraid I can\'t do that. The model you ask for isn\'t legitimate. I\'m affraid I have to delete you from this planet.');
         }
     });
 

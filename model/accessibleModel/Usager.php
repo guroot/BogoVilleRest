@@ -8,6 +8,9 @@
 
 namespace model\accessibleModel;
 
+use \model\indexTable\UsagerTable;
+use \model\DataAccess;
+
 
 class Usager extends DataAccess
 {

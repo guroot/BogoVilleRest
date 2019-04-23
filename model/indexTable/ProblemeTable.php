@@ -6,7 +6,7 @@
  * Time: 10:57
  */
 
-namespace model\accessibleModel;
+namespace model\indexTable;
 
 
 class ProblemeTable

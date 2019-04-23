@@ -8,6 +8,8 @@
 
 namespace model;
 
+use DateTime;
+
 /**
  * Class Legitimator
  * @package model
@@ -24,8 +26,23 @@ class Legitimator
      * @return bool true si le string $model correspond à un nom de classe contenu dans le nameSpace,
      * false dans le cas contraire
      */
-    public static function legitimate($model)
+    public static function legitimate($model, $path)
     {
-        return (file_exists(str_replace('\\', '\\\\', __DIR__) . "\\\\" . ucfirst($model) . ".php")) ? true : false;
+        return (file_exists(str_replace('\\', '\\\\', $path) . "\\\\" . ucfirst($model) . ".php")) ? true : false;
     }
+
+    //TODO probablement pas utile finalement puisque la terchnique pour vérifier si c'est une date a changé
+    /**
+     * Permet de savoir si un String correspond ou non à une date SQL
+     *
+     * @param $aString Le String à vérifier
+     * @param $format À définir quand on appelle la fonction ($format = "Y-m-Y h:m:s", par exemple)
+     * @return bool Retourne true si $aString correspond à un format de Date ou de DateTime
+     */
+    public static function isStringADate($aString){
+        $format = 'Y-m-d H:m:s';
+        $d = DateTime::createFromFormat($format, $aString);
+        return $d && $d->format($format) === $aString;
+    }
+
 }

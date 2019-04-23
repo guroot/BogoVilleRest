@@ -1,6 +1,6 @@
 <?php
 
-namespace model\accessibleModel;
+namespace model\indexTable;
 
 class EvenementTable
 {

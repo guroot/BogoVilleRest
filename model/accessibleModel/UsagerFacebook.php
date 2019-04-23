@@ -8,6 +8,9 @@
 
 namespace model\accessibleModel;
 
+use \model\indexTable\UsagerFacebookTable;
+use \model\DataAccess;
+
 
 class UsagerFacebook extends DataAccess
 {

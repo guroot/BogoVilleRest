@@ -11,9 +11,11 @@
   ],
   "require": {
     "slim/slim": "^3.0",
-    "phpunit/phpunit": "8.1.2"
+    "phpunit/phpunit": "^6"
   },
-    "autoload": {
-      "psr-4": {"model\\": "model/"}
+  "autoload": {
+    "psr-4": {
+      "model\\": "model/"
     }
+  }
 }

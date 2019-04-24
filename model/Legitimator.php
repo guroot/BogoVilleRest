@@ -28,7 +28,8 @@ class Legitimator
      */
     public static function legitimate($model, $path)
     {
-        return (file_exists(str_replace('\\', '\\\\', $path) . "\\\\" . ucfirst($model) . ".php")) ? true : false;
+
+        return (file_exists( $path. DIRECTORY_SEPARATOR. ucfirst($model) . ".php")) ? true : (file_exists(str_replace(DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR, $path) . DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR . ucfirst($model) . ".php")) ? true : false;
     }
 
     //TODO probablement pas utile finalement puisque la terchnique pour vérifier si c'est une date a changé

@@ -9,12 +9,14 @@
 //Commentaire pour pouvoir push
 
 require 'vendor/autoload.php';
-
+ini_set("display_errors",true);
 
 $configuration = [
     'settings' => [
         'displayErrorDetails' => true,
     ],
+
+
 ];
 $c = new \Slim\Container($configuration);
 
@@ -48,7 +50,8 @@ $pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
     });
 
     $app->get("/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+                ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $myGenericModel->getAll();

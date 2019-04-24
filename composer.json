@@ -1,0 +1,21 @@
+{
+  "name": "bogo-ville/rest",
+  "description": "Rest service for BogoVille",
+  "minimum-stability": "stable",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "Jonathan Fleury and students",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "slim/slim": "^3.0",
+    "phpunit/phpunit": "8.0.6",
+    "dyorg/slim-token-authentication": "^0.2.0"
+  },
+    "autoload": {
+      "psr-4": {"model\\": "model/"}
+
+    }
+}

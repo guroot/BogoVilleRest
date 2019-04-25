@@ -11,11 +11,11 @@
   ],
   "require": {
     "slim/slim": "^3.0",
-    "phpunit/phpunit": "8.0.6",
-    "dyorg/slim-token-authentication": "^0.2.0"
+    "phpunit/phpunit" : "^8"
   },
-    "autoload": {
-      "psr-4": {"model\\": "model/"}
-
+  "autoload": {
+    "psr-4": {
+      "model\\": "model/"
     }
+  }
 }

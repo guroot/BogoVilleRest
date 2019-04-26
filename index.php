@@ -6,6 +6,23 @@
  * Time: 20:16
  */
 
+ini_set("display_errors",true);
+
+function authenticate()
+{
+    header('WWW-Authenticate: Basic realm=" Authentication System"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo "Vous devez entrer un identifiant et un mot de passe valides pour accéder
+    à cette ressource.\n";
+    exit;
+}
+
+if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_USER'] !== 'admin' || $_SERVER['PHP_AUTH_PW'] !== 'admin') {
+    authenticate();
+} else {
+
+}
+
 //Commentaire pour pouvoir push
 
 require 'vendor/autoload.php';
@@ -26,7 +43,7 @@ $app->get('/', function ($request, $response, $args){
     return $response->withStatus(200)->write('Ceci est un service Rest et ne devrait pas être accédé directement');
 });
 
-$pdo =  new PDO('mysql:host=localhost;dbname=bogoville', 'root', '');
+$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
 
     $app->get("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
         if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {

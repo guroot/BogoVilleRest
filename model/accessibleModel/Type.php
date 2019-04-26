@@ -11,6 +11,13 @@ namespace model\accessibleModel;
 use \model\indexTable\TypeTable;
 use \model\DataAccess;
 
+//   ::::::::::: :::   ::: :::::::::  ::::::::::
+//       :+:     :+:   :+: :+:    :+: :+:
+//       +:+      +:+ +:+  +:+    +:+ +:+
+//       +#+       +#++:   +#++:++#+  +#++:++#
+//       +#+        +#+    +#+        +#+
+//       #+#        #+#    #+#        #+#
+//       ###        ###    ###        ##########
 
 class Type extends DataAccess
 {

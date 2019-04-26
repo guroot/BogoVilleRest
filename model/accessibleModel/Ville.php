@@ -11,6 +11,13 @@ namespace model\accessibleModel;
 use model\indexTable\VilleTable;
 use \model\DataAccess;
 
+//   :::     ::: ::::::::::: :::        :::        ::::::::::
+//   :+:     :+:     :+:     :+:        :+:        :+:
+//   +:+     +:+     +:+     +:+        +:+        +:+
+//   +#+     +:+     +#+     +#+        +#+        +#++:++#
+//    +#+   +#+      +#+     +#+        +#+        +#+
+//     #+#+#+#       #+#     #+#        #+#        #+#
+//       ###     ########### ########## ########## ##########
 
 class Ville extends DataAccess
 {

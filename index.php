@@ -6,6 +6,7 @@
  * Time: 20:16
  */
 
+require 'vendor/autoload.php';
 
 //   __/\\\\\\\\\\\_______________________/\\\____________________________________________________/\\\_______________________________
 //   __\/////\\\///_______________________\/\\\___________________________________________________\/\\\______________________________
@@ -33,11 +34,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) || $_SE
 } else {
 
 }
-
-
-//Commentaire pour pouvoir push
-
-require 'vendor/autoload.php';
 
 session_start();
 session_regenerate_id();
@@ -140,7 +136,7 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
             else
                 return $response->withStatus(500)
                     ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                    ->write('Cannot insert the shit');
+                    ->write('Cannot insert the object. It\'s too tight...');
         } else {
             return $response->withStatus(400)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')

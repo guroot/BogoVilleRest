@@ -76,7 +76,8 @@ $app->get('/', function ($request, $response, $args){
 $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
 
     $app->get("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $myGenericModel->getOneById($args['id']);
@@ -115,7 +116,8 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
     });
 
     $app->get("/{field}/{fieldValue}/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $event = new \model\Evenement($pdo);
@@ -136,7 +138,8 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
     });
 
     $app->post("/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $request->getParsedBody();
@@ -154,7 +157,8 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
     });
 
     $app->put("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $request->getParsedBody();
@@ -172,7 +176,8 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
     });
 
     $app->delete("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $myGenericModel->getOneById($args['id']);

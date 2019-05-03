@@ -29,7 +29,7 @@ function authenticate()
 }
 
 if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_USER'] !== 'admin' || $_SERVER['PHP_AUTH_PW'] !== 'admin') {
-   // authenticate();
+    authenticate();
 } else {
 
 }

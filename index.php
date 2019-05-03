@@ -29,7 +29,7 @@ function authenticate()
 }
 
 if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_USER'] !== 'admin' || $_SERVER['PHP_AUTH_PW'] !== 'admin') {
-    authenticate();
+   // authenticate();
 } else {
 
 }
@@ -194,6 +194,33 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
                 ->write('I\'m affraid I can\'t do that. The model you ask for isn\'t legitimate. I\'m affraid I have to delete you from this planet.');
         }
     });
+
+    $app->get('{model}/field/{field}/{value}', function($request, $response, $args) use ($pdo) {
+
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
+            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
+            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
+            $myGenericModel = new $className($pdo);
+            $data = $myGenericModel->getFieldValue($args['value']);
+            if ($data)
+                $response = $response->withJson($myGenericModel->getFieldValue($args['value']));
+            else
+                return $response->withStatus(404)
+                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                    ->write('Enregistrement introuvable');
+            return $response;
+        } else {
+            return $response->withStatus(400)
+                ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                ->write('I\'m affraid I can\'t do that. The model you ask for isn\'t legitimate. I\'m affraid I have to delete you from this planet.');
+
+        }
+    });
+
+
+
+
+
 
 // Run application
     $app->run();

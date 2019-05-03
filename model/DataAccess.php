@@ -55,7 +55,7 @@ class DataAccess implements RequestInterface
      */
     public function deleteWithId($id)
     {
-        $statement = $this->_pdo->prepare("DELETE FROM {$this->_tableName} WHERE {$this->_idColumnName}=$id");
+        $statement = $this->_pdo->prepare("DELETE FROM {$this->_tableName} WHERE {$this->_idColumnName}=?");
         return $statement->execute([$id]);
     }
 

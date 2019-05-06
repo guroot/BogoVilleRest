@@ -100,7 +100,7 @@ class DataAccess implements RequestInterface
 
     public function getAllWithEqualCondition($fieldName, $fieldValue)
     {
-        $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE {$this->_tableName}." . $fieldName . " = " . $fieldValue);
+        $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE {$this->_idColumnName}." . $fieldName . " = " . $fieldValue);
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_OBJ);
     }
@@ -147,5 +147,6 @@ class DataAccess implements RequestInterface
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_COLUMN);
     }
+
 
 }

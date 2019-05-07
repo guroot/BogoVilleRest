@@ -25,11 +25,17 @@ class Usager extends DataAccess
     /**
      * Usager constructor.
      */
-    public function __construct($pdo)
-    {
+    public function __construct($pdo){
         parent::__construct($pdo);
         $this->_idColumnName = UsagerTable::COLUMNS['ID'];
         $this->_columns = UsagerTable::COLUMNS;
+    }
+
+    public function getByEmail($email){
+        var_dump("je suis dans getByEmail de usager");
+        $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE {" . urldecode(UsagerTable::COLUMNS['EMAIL']) . "} =?");
+        $statement->execute([$email]);
+        return $statement->fetchObject();
     }
 
 }

@@ -6,6 +6,7 @@
  * Time: 20:16
  */
 
+require 'vendor/autoload.php';
 
 //   __/\\\\\\\\\\\_______________________/\\\____________________________________________________/\\\_______________________________
 //   __\/////\\\///_______________________\/\\\___________________________________________________\/\\\______________________________
@@ -35,7 +36,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) || $_SE
 }
 
 
-//Commentaire pour pouvoir push
 
 require 'vendor/autoload.php';
 
@@ -48,7 +48,7 @@ if(!isset($_SESSION['LAST_ACTIVITY'])){
 if (time() - $_SESSION['LAST_ACTIVITY'] > 1800) { //1800 secondes = 30m
     session_unset();
     session_destroy();
-    session_start(['LAST_ACTIVITY'] == time());
+    session_start(['LAST_ACTIVITY' => time()]);
 } else if(time() != $_SESSION['LAST_ACTIVITY']) {
     $SESSION['LAST_ACTIVITY'] = time();
 }
@@ -137,6 +137,19 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
         }
     });
 
+    $app->get("/usager/validate/{email}/val", function ($request, $response, $args) use ($pdo){
+        $usagerModel = new \model\accessibleModel\Usager($pdo);
+        $data = $usagerModel->getByEmail($args['email']);
+        var_dump("je suis dans rest index.php");
+        if($data) {
+            return $response->withJson($usagerModel->getByEmail($args['email']));
+        } else {
+            return $response->withStatus(404)
+                ->withHeader('Content-Type', 'application/json;charset=utf-8')
+                ->write('Enregistrement introuvable');
+        }
+    });
+
     $app->post("/{model}", function ($request, $response, $args) use ($pdo) {
         if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
             ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
@@ -144,11 +157,11 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
             $myGenericModel = new $className($pdo);
             $data = $request->getParsedBody();
             if ($data)
-                $response = $response->withJson($myGenericModel->insert($request->getParams(), $data));
+                return $response->withJson($myGenericModel->insert($request->getParams(), $data));
             else
                 return $response->withStatus(500)
                     ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                    ->write('Cannot insert the shit');
+                    ->write('Cannot insert the object. It\'s too tight...');
         } else {
             return $response->withStatus(400)
             ->withHeader('Content-Type', 'application/json;charset=utf-8')

@@ -112,6 +112,12 @@ class DataAccess implements RequestInterface
         return $statement->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function getOneWithEqualCondition($fieldName, $fieldValue, $columnName){
+        $statement = $this->_pdo->prepare("SELECT {$columnName} FROM {$this->_tableName} WHERE {$fieldName} = {$fieldValue}");
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_OBJ);
+    }
+
     public function getCount()
     {
 

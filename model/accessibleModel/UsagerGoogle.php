@@ -8,6 +8,9 @@
 
 namespace model\accessibleModel;
 
+use \model\indexTable\UsagerGoogleTable;
+use \model\DataAccess;
+
 
 class UsagerGoogle extends DataAccess
 {

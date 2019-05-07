@@ -6,7 +6,7 @@
  * Time: 11:28
  */
 
-namespace model\accessibleModel;
+namespace model\indexTable;
 
 
 class UsagerTable

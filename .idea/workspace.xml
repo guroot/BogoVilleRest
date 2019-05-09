@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="437234dc-41f7-428b-b5cd-145c61238255" name="Default Changelist" comment="tentative 2 de faire marcher l'authentification">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <ignored path=".idea/" />
+    <ignored path=".htaccess" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <executablePath>composer</executablePath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/DataAccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/accessibleModel/Usager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+              <folding>
+                <element signature="e#123#157#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>var_</find>
+      <find>getAllThe</find>
+      <find>delete</find>
+      <find>insertThe</find>
+      <find>update</find>
+      <find>getOneBy</find>
+      <find>shit</find>
+      <find>columns</find>
+      <find>Evenement</find>
+      <find>DataAccessTest</find>
+      <find>getOne</find>
+      <find>email</find>
+      <find>bogoville.</find>
+      <find>urldecoe</find>
+      <find>var_d</find>
+      <find>var_dump</find>
+      <find>get</find>
+      <find>getAllWith</find>
+      <find>bogoville.xyz</find>
+      <find>je suis</find>
+      <find>localhost</find>
+      <find>fieldName</find>
+    </findStrings>
+    <dirStrings>
+      <dir>C:\Users\cedri\PhpstormProjects\BogosortProject_github</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="UmbrellaCorpAgent" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="guroot" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="BogoVilleRest" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/model/accessibleModel/UsagerTable.php" />
+        <option value="$PROJECT_DIR$/model/DataAccessTest.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/NotificationTable.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/DataAccess.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/StatutTable.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/VIlleTable.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/MediaTable.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/VoirieProbleme.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/EvenementTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/NotificationTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/MediaTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/ProblemeTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/RegionTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/StatutTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/TypeTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/UsagerFacebookTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/UsagerGoogleTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/UsagerTable.php" />
+        <option value="$PROJECT_DIR$/model/indexTable/VIlleTable.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/UsagerFacebook.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/UsagerGoogle.php" />
+        <option value="$PROJECT_DIR$/model/Tests/DataAccessTest.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/model/tests/DataAccessTest.php" />
+        <option value="$PROJECT_DIR$/model/FunctionsTest.php" />
+        <option value="$PROJECT_DIR$/model/Legitimator.php" />
+        <option value="$PROJECT_DIR$/model/tests/AllModelAccessTests.php" />
+        <option value="$PROJECT_DIR$/../untitled/model/Session.php" />
+        <option value="$PROJECT_DIR$/../untitled/session.php" />
+        <option value="$PROJECT_DIR$/../untitled/Cookie.php" />
+        <option value="$PROJECT_DIR$/../untitled/CookieManager.php" />
+        <option value="$PROJECT_DIR$/../untitled/cookietest.html" />
+        <option value="$PROJECT_DIR$/../untitled/cookietest.php" />
+        <option value="$PROJECT_DIR$/model/curlStuff/Curl.php" />
+        <option value="$PROJECT_DIR$/../BogoVille_curl/CurlRequestGenerator.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Media.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Notification.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Probleme.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Region.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Statut.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Type.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Ville.php" />
+        <option value="$PROJECT_DIR$/../BogoVille_curl/index.php" />
+        <option value="$PROJECT_DIR$/model/curl/CurlRequestData.php" />
+        <option value="$PROJECT_DIR$/model/curl/CurlRequestGenerator.php" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Evenement.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/model/accessibleModel/Usager.php" />
+        <option value="$PROJECT_DIR$/model/DataAccess.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/container-interop/container-interop" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/pimple/pimple" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/slim/slim" />
+      <path value="$PROJECT_DIR$/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="85" />
+    <option name="y" value="25" />
+    <option name="width" value="1750" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="BogosortProject_github" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="BogosortProject_github" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BogosortProject_github" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BogosortProject_github" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="accessibleModel" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BogosortProject_github" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BogosortProject_github" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cedri\PhpstormProjects\BogosortProject_github\model" />
+      <recent name="C:\Users\cedri\PhpstormProjects\BogosortProject_github\model\indexTable" />
+      <recent name="C:\Users\cedri\PhpstormProjects\BogosortProject_github\model\accessisble_model" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="PHP Script.index.php">
+    <configuration name="AllModelAccessTests.testEvenement" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="model\tests\AllModelAccessTests" file="$PROJECT_DIR$/model/tests/AllModelAccessTests.php" method="testEvenement" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FunctionsTest.testBlabla" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="model\FunctionsTest" file="$PROJECT_DIR$/model/FunctionsTest.php" method="testBlabla" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CookieManager.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/../untitled/CookieManager.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="CurlRequestGenerator.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/../BogoVille_curl/CurlRequestGenerator.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/../BogoVille_curl/index.php">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="PHP Script.CookieManager.php" />
+      <item itemvalue="PHP Script.CurlRequestGenerator.php" />
+      <item itemvalue="PHP Script.index.php" />
+      <item itemvalue="PHPUnit.phpunit.xml.dist" />
+      <item itemvalue="PHPUnit.AllModelAccessTests.testEvenement" />
+      <item itemvalue="PHPUnit.FunctionsTest.testBlabla" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.index.php" />
+        <item itemvalue="PHP Script.CurlRequestGenerator.php" />
+        <item itemvalue="PHP Script.CookieManager.php" />
+        <item itemvalue="PHPUnit.AllModelAccessTests.testEvenement" />
+        <item itemvalue="PHPUnit.FunctionsTest.testBlabla" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="437234dc-41f7-428b-b5cd-145c61238255" name="Default Changelist" comment="" />
+      <created>1554748524834</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554748524834</updated>
+      <workItem from="1554748527584" duration="179000" />
+      <workItem from="1554748709258" duration="111000" />
+      <workItem from="1554748822146" duration="239000" />
+      <workItem from="1554749088741" duration="1430000" />
+      <workItem from="1554752126770" duration="91000" />
+      <workItem from="1554829183064" duration="6490000" />
+      <workItem from="1554899396601" duration="58000" />
+      <workItem from="1554899563694" duration="9362000" />
+      <workItem from="1555079291587" duration="15696000" />
+      <workItem from="1555332832292" duration="13721000" />
+      <workItem from="1555417252584" duration="3687000" />
+      <workItem from="1555421246562" duration="6479000" />
+      <workItem from="1555427794018" duration="253000" />
+      <workItem from="1555428065831" duration="12949000" />
+      <workItem from="1555502576665" duration="3783000" />
+      <workItem from="1555506695282" duration="6481000" />
+      <workItem from="1555518916145" duration="6658000" />
+      <workItem from="1555597503610" duration="1938000" />
+      <workItem from="1556029844752" duration="10986000" />
+      <workItem from="1556054792155" duration="2400000" />
+      <workItem from="1556109011513" duration="6337000" />
+      <workItem from="1556214649426" duration="3202000" />
+      <workItem from="1556287236952" duration="15005000" />
+      <workItem from="1556392567648" duration="637000" />
+      <workItem from="1556542468922" duration="1238000" />
+      <workItem from="1556546262406" duration="792000" />
+      <workItem from="1556803593994" duration="4584000" />
+      <workItem from="1556815914537" duration="88000" />
+      <workItem from="1556816068718" duration="1335000" />
+      <workItem from="1556818670280" duration="603000" />
+      <workItem from="1556821958372" duration="718000" />
+      <workItem from="1556824838475" duration="337000" />
+      <workItem from="1556825450646" duration="115000" />
+      <workItem from="1556906395778" duration="28000" />
+      <workItem from="1557165705596" duration="1245000" />
+      <workItem from="1557167417055" duration="536000" />
+      <workItem from="1557177055898" duration="43000" />
+      <workItem from="1557232099240" duration="9550000" />
+      <workItem from="1557247380315" duration="7960000" />
+      <workItem from="1557321184855" duration="7644000" />
+      <workItem from="1557338934154" duration="1337000" />
+      <workItem from="1557341204990" duration="2089000" />
+      <workItem from="1557403901680" duration="2664000" />
+    </task>
+    <task id="LOCAL-00001" summary="evenement">
+      <created>1554749017691</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1554749017691</updated>
+    </task>
+    <task id="LOCAL-00002" summary="evenement">
+      <created>1554829337323</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554829337323</updated>
+    </task>
+    <task id="LOCAL-00003" summary="evenement">
+      <created>1554830169734</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1554830169734</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'master' of https://github.com/UmbrellaCorpAgent/BogoVilleRest&#10;&#10;# Conflicts:&#10;#&#9;.idea/BogoVilleRest.iml">
+      <created>1554830285666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554830285666</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge branch 'master' of https://github.com/UmbrellaCorpAgent/BogoVilleRest&#10;                                                                                  &#10;                                                                                  # Conflicts:&#10;                                                                                  #&#9;.idea/BogoVilleRest.iml">
+      <created>1554831709708</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1554831709708</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge branch 'master' of https://github.com/UmbrellaCorpAgent/BogoVilleRest&#10;                                                                                  &#10;                                                                                  # Conflicts:&#10;                                                                                  #&#9;.idea/BogoVilleRest.iml">
+      <created>1554832192715</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1554832192715</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge branch 'master' of https://github.com/UmbrellaCorpAgent/BogoVilleRest&#10;                                                                                  &#10;                                                                                  # Conflicts:&#10;                                                                                  #&#9;.idea/BogoVilleRest.iml">
+      <created>1554832471590</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1554832471590</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Version finale&#10;&#10;- test contre injection de code&#10;- changer les noms des requêtes pour des noms plates">
+      <created>1555097894535</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1555097894535</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- création du sous-namespace &quot;accessibleModel&quot;&#10;&#10;- ajout des tables :&#10;     usager&#10;     usager_facebook&#10;     usager_google&#10;     probleme&#10;     type">
+      <created>1555353169511</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1555353169511</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- création du sous-namespace &quot;accessibleModel&quot;&#10;&#10;- ajout des tables :&#10;     usager&#10;     usager_facebook&#10;     usager_google&#10;     probleme&#10;     type">
+      <created>1555353276732</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1555353276732</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- commentaire ajouter dans index.php juste pour pouvoir commit">
+      <created>1555354159105</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1555354159105</updated>
+    </task>
+    <task id="LOCAL-00012" summary="- commentaire ajouter dans index.php juste pour pouvoir commit">
+      <created>1555354263268</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1555354263268</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- commentaire ajouter dans index.php juste pour pouvoir commit">
+      <created>1555355176413</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1555355176413</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/guroot/BogoVilleRest&#10;&#10;# Conflicts:&#10;#&#9;composer.json">
+      <created>1555355356208</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1555355356208</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Abstrait les test pour qu'ils puissent fiter avec n'importe quel (ou presque) model">
+      <created>1555528605148</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1555528605148</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Curl">
+      <created>1556295757970</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556295757970</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Curl">
+      <created>1556297037011</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1556297037011</updated>
+    </task>
+    <task id="LOCAL-00018" summary="retour à la normal">
+      <created>1556297655559</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1556297655559</updated>
+    </task>
+    <task id="LOCAL-00019" summary="intégration authentification">
+      <created>1556306399959</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1556306399959</updated>
+    </task>
+    <task id="LOCAL-00020" summary="tentative de faire marcher l'authentification">
+      <created>1557248117649</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1557248117650</updated>
+    </task>
+    <task id="LOCAL-00021" summary="tentative 2 de faire marcher l'authentification">
+      <created>1557405395589</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1557405395589</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 14h 56m 13s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 14h 59m 53s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 00m 17s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 01m 13s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 03m 51s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 04m 07s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 05m 12s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 05m 32s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.17 at 15h 06m 13s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AllModelAccessTests_testEvenement - 2019.04.18 at 10h 44m 35s.xml">
+      <configuration name="AllModelAccessTests.testEvenement" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="171078000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957806" visible="true" weight="0.21006711" />
+      <window_info id="Structure" order="1" sideWeight="0.5042194" side_tool="true" weight="0.16442953" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932885" weight="0.32577905" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8322148" weight="0.4022663" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986577" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49597314" weight="0.20679887" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.40335572" side_tool="true" visible="true" weight="0.33144477" />
+      <window_info anchor="bottom" id="File Transfer" order="11" sideWeight="0.5966443" visible="true" weight="0.33144477" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49932885" weight="0.28186968" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4957806" visible="true" weight="0.16375838" />
+      <window_info id="Structure" order="1" sideWeight="0.5042194" side_tool="true" weight="0.16442953" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932885" weight="0.32577905" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8322148" weight="0.4022663" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986577" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49597314" visible="true" weight="0.20679887" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50402683" side_tool="true" visible="true" weight="0.20679887" />
+      <window_info anchor="bottom" id="File Transfer" order="11" sideWeight="0.7483221" weight="0.33144477" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49932885" weight="0.28186968" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="evenement" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/UmbrellaCorpAgent/BogoVilleRest&#10;&#10;# Conflicts:&#10;#&#9;.idea/BogoVilleRest.iml" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/UmbrellaCorpAgent/BogoVilleRest&#10;                                                                                  &#10;                                                                                  # Conflicts:&#10;                                                                                  #&#9;.idea/BogoVilleRest.iml" />
+    <MESSAGE value="Version finale&#10;&#10;- test contre injection de code&#10;- changer les noms des requêtes pour des noms plates" />
+    <MESSAGE value="- création du sous-namespace &quot;accessibleModel&quot;&#10;&#10;- ajout des tables :&#10;     usager&#10;     usager_facebook&#10;     usager_google&#10;     probleme&#10;     type" />
+    <MESSAGE value="- commentaire ajouter dans index.php juste pour pouvoir commit" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/guroot/BogoVilleRest&#10;&#10;# Conflicts:&#10;#&#9;composer.json" />
+    <MESSAGE value="Abstrait les test pour qu'ils puissent fiter avec n'importe quel (ou presque) model" />
+    <MESSAGE value="Comments et de l'ASCII ART" />
+    <MESSAGE value="Curl" />
+    <MESSAGE value="retour à la normal" />
+    <MESSAGE value="intégration authentification" />
+    <MESSAGE value="tentative de faire marcher l'authentification" />
+    <MESSAGE value="tentative 2 de faire marcher l'authentification" />
+    <option name="LAST_COMMIT_MESSAGE" value="tentative 2 de faire marcher l'authentification" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/model/indexTable/UsagerFacebookTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/indexTable/UsagerGoogleTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/indexTable/VIlleTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/indexTable/RegionTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/indexTable/ProblemeTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/UsagerGoogle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#123#163#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/tests/DataAccessTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+            <element signature="e#113#145#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled/.idea/workspace.xml" />
+    <entry file="file://$PROJECT_DIR$/../untitled/.idea/untitled.iml" />
+    <entry file="file://$PROJECT_DIR$/../untitled/.idea/modules.xml" />
+    <entry file="file://$PROJECT_DIR$/../untitled/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/../untitled/model/Session.php" />
+    <entry file="file://$PROJECT_DIR$/../untitled/.idea/encodings.xml" />
+    <entry file="file://$PROJECT_DIR$/model/tests/AllModelAccessTests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+          <folding>
+            <element signature="e#114#145#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled/session.php" />
+    <entry file="file://$PROJECT_DIR$/model/indexTable/EvenementTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled/Cookie.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/_types.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled/cookietest.html" />
+    <entry file="file://$PROJECT_DIR$/../untitled/cookietest.php" />
+    <entry file="file://$PROJECT_DIR$/../untitled/CookieManager.php" />
+    <entry file="file://$PROJECT_DIR$/model/curlStuff/Curl.php" />
+    <entry file="file://$PROJECT_DIR$/model/indexTable/MediaTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/session/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="178" column="9" selection-start-line="178" selection-start-column="9" selection-end-line="178" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding>
+            <element signature="e#123#163#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Region.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding>
+            <element signature="e#41#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Type.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#123#155#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/UsagerFacebook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#123#165#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Ville.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding>
+            <element signature="e#123#155#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BogoVille_groupe/backend/CurlRequestGenerator.php" />
+    <entry file="file://$PROJECT_DIR$/model/indexTable/StatutTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/indexTable/NotificationTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/curl/CurlRequestGenerator.php" />
+    <entry file="file://$PROJECT_DIR$/model/curl/CurlRequestData.php" />
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Media.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="63" lean-forward="true" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
+          <folding>
+            <element signature="e#123#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BogoVille_curl/.idea/BogoVille_curl.iml" />
+    <entry file="file://$PROJECT_DIR$/../BogoVille_groupe/backend/CurlRequestData.php" />
+    <entry file="file://$PROJECT_DIR$/../BogoVille_curl/index.php" />
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Statut.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+          <folding>
+            <element signature="e#123#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Probleme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="95" selection-start-line="19" selection-start-column="95" selection-end-line="19" selection-end-column="95" />
+          <folding>
+            <element signature="e#123#159#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="797" column="9" selection-start-line="797" selection-start-column="9" selection-end-line="797" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Evenement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+          <folding>
+            <element signature="e#41#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20281">
+          <caret line="1193" column="20" selection-start-line="1193" selection-start-column="20" selection-end-line="1193" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Legitimator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/indexTable/UsagerTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/FunctionsTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <folding>
+            <element signature="e#107#139#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/accessibleModel/Usager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="e#123#157#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/DataAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

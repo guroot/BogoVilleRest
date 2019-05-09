@@ -32,8 +32,7 @@ class Usager extends DataAccess
     }
 
     public function getByEmail($email){
-        var_dump("je suis dans getByEmail de usager");
-        $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE {" . urldecode(UsagerTable::COLUMNS['EMAIL']) . "} =?");
+        $statement = $this->_pdo->prepare("SELECT * FROM {$this->_tableName} WHERE " . UsagerTable::COLUMNS['EMAIL'] . " =?");
         $statement->execute([$email]);
         return $statement->fetchObject();
     }

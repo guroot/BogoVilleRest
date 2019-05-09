@@ -35,11 +35,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) || $_SE
 
 }
 
-
-
-require 'vendor/autoload.php';
-
-
 session_start();
 session_regenerate_id();
 if(!isset($_SESSION['LAST_ACTIVITY'])){
@@ -48,7 +43,8 @@ if(!isset($_SESSION['LAST_ACTIVITY'])){
 if (time() - $_SESSION['LAST_ACTIVITY'] > 1800) { //1800 secondes = 30m
     session_unset();
     session_destroy();
-    session_start(['LAST_ACTIVITY' => time()]);
+    session_start();
+    $_SESSION['LAST_ACTIVITY'] = time();
 } else if(time() != $_SESSION['LAST_ACTIVITY']) {
     $SESSION['LAST_ACTIVITY'] = time();
 }
@@ -73,7 +69,7 @@ $app->get('/', function ($request, $response, $args){
     return $response->withStatus(200)->write('Ceci est un service Rest et ne devrait pas être accédé directement');
 });
 
-$pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
+$pdo =  new PDO('mysql:host=localhost;port=3306;dbname=bogoville', 'root', '');
 
     $app->get("/{model}/{id}", function ($request, $response, $args) use ($pdo) {
         if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
@@ -115,16 +111,14 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
         }
     });
 
-    $app->get("/{field}/{fieldValue}/{model}", function ($request, $response, $args) use ($pdo) {
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
-            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
+    $app->get("/{fieldName}/{fieldValue}/{model}", function ($request, $response, $args) use ($pdo) {
+        if(\model\Legitimator::legitimate($args['model'], __DIR__ . "\model\accessibleModel")) {
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
-            $event = new \model\Evenement($pdo);
-            $event->getAllWithEqualCondition($args['fieldValue'], $args['field']);
-            $data = $myGenericModel->getAllWithEqualCondition($args['fieldValue'], $args['field']);
+            $myGenericModel->getAllWithEqualCondition($args['fieldName'], $args['fieldValue']);
+            $data = $myGenericModel->getAllWithEqualCondition($args['fieldName'], $args['fieldValue']);
             if ($data)
-                $response = $response->withJson(getAllWithEqualCondition($args['field'], $args['fieldValue']));
+                $response = $response->withJson(getAllWithEqualCondition($args['fieldName'], $args['fieldValue']));
             else
                 return $response->withStatus(404)
                     ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -139,8 +133,7 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
 
     $app->get("/usager/validate/{email}/val", function ($request, $response, $args) use ($pdo){
         $usagerModel = new \model\accessibleModel\Usager($pdo);
-        $data = $usagerModel->getByEmail($args['email']);
-        var_dump("je suis dans rest index.php");
+        $data = $usagerModel->getByEmail(urldecode($args['email']));
         if($data) {
             return $response->withJson($usagerModel->getByEmail($args['email']));
         } else {
@@ -156,8 +149,9 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
             $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
             $myGenericModel = new $className($pdo);
             $data = $request->getParsedBody();
-            if ($data)
+            if ($data) {
                 return $response->withJson($myGenericModel->insert($request->getParams(), $data));
+            }
             else
                 return $response->withStatus(500)
                     ->withHeader('Content-Type', 'application/json;charset=utf-8')
@@ -207,33 +201,6 @@ $pdo =  new PDO('mysql:host=127.0.0.1;port=3306;dbname=bogoville', 'root', '');
                 ->write('I\'m affraid I can\'t do that. The model you ask for isn\'t legitimate. I\'m affraid I have to delete you from this planet.');
         }
     });
-
-    $app->get('{model}/field/{field}/{value}', function($request, $response, $args) use ($pdo) {
-
-        if(\model\Legitimator::legitimate($args['model'], __DIR__ . DIRECTORY_SEPARATOR
-            ."model".DIRECTORY_SEPARATOR."accessibleModel")) {
-            $className = "\model\\accessibleModel\\" . ucfirst($args['model']);
-            $myGenericModel = new $className($pdo);
-            $data = $myGenericModel->getFieldValue($args['value']);
-            if ($data)
-                $response = $response->withJson($myGenericModel->getFieldValue($args['value']));
-            else
-                return $response->withStatus(404)
-                    ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                    ->write('Enregistrement introuvable');
-            return $response;
-        } else {
-            return $response->withStatus(400)
-                ->withHeader('Content-Type', 'application/json;charset=utf-8')
-                ->write('I\'m affraid I can\'t do that. The model you ask for isn\'t legitimate. I\'m affraid I have to delete you from this planet.');
-
-        }
-    });
-
-
-
-
-
 
 // Run application
     $app->run();

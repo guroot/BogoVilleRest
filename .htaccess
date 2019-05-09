@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#Enlever le /rest qui est là juste pour tester
+RewriteRule ^(.*)$ /rest/index.php?path=$1 [NC,L,QSA]
